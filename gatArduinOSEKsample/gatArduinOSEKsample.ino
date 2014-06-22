@@ -15,10 +15,10 @@
 
 /***** gatArduinOSEK includes *****/
 /*** Types ***/
-#include "gttc_types.h"
+#include <gttc_types.h>
 /*** Timer ***/
 //#define TIMEBASE_USE_MS 1  // <-- Normally the timer unit is the us (microseconds) but you can use this define to use ms (milliseconds)
-#include "gttc_timer.h"
+#include <gttc_timer.h>
 
 /* ---------------------------------------*/
 
