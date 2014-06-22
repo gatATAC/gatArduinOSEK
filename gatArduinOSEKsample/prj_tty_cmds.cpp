@@ -1,16 +1,16 @@
 /* --- Serial console command parse module --- */
 /* Each command is 3 char lenght:
-
-  * la1 -> led A on
-  * la0 -> led A off
-  * lb1 -> led B on
-  * lb0 -> led B off
-  * lc1 -> led C on
-  * lc0 -> led C off
-  * ld1 -> led D on
-  * ld0 -> led D off
-
-*/
+ 
+ * la1 -> led A on
+ * la0 -> led A off
+ * lb1 -> led B on
+ * lb0 -> led B off
+ * lc1 -> led C on
+ * lc0 -> led C off
+ * ld1 -> led D on
+ * ld0 -> led D off
+ 
+ */
 
 #include "prj_tty_cmds.h"
 #include "prj_pinout.h"
@@ -25,11 +25,12 @@ void handle3rdCharForLed(uchar_t inByte){
   uint8_t value;
   if (inByte=='0'){
     value=LOW;
-  } else {
+  } 
+  else {
     value=HIGH;
   }
   if (ledToChange>0 && ledToChange<=4) {
-      dre.ledState[ledToChange-1]=value;
+    dre.ledState[ledToChange-1]=value;
   }
 }
 
@@ -102,11 +103,12 @@ void ttyCmdParse(uchar_t charReceived){
 void ttyCmdHandle(uint8_t times){
   // We will try to read and parse N times
   uint8_t i;
-  
+
   for (i=0;i<times;i++){
     if (Serial.available()>0){
       ttyCmdParse(Serial.read());      
     }
   }
 }
+
 

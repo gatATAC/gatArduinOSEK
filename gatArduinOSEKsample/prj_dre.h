@@ -7,13 +7,14 @@
 
 typedef struct {
 
-/*** Input ***/
-/** Led statuses **/
-uint8_t ledState[4];             // ledState used to set the LED
+  /*** Input ***/
+  /** Led statuses **/
+  uint8_t ledState[4];             // ledState used to set the LED
 
-/** Button statuses **/
-uint8_t buttonState[4];         // variable for reading the pushbutton status
-} t_dre;
+  /** Button statuses **/
+  uint8_t buttonState[4];         // variable for reading the pushbutton status
+} 
+t_dre;
 
 extern t_dre dre;
 
@@ -23,3 +24,4 @@ extern "C"
 void dreInit(void);
 
 #endif // _PRJ_DRE_H
+
