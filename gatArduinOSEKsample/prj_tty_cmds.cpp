@@ -1,17 +1,23 @@
 /* --- Serial console command parse module --- */
 /* Each command is 3 char lenght:
  
- * la1 -> led A on
- * la0 -> led A off
- * lb1 -> led B on
- * lb0 -> led B off
- * lc1 -> led C on
- * lc0 -> led C off
- * ld1 -> led D on
- * ld0 -> led D off
+ * l00 -> led 0 off
+ * l01 -> led 0 on green
+ * l02 -> led 0 on red*
+ * l10 -> led 1 off
+ * l11 -> led 1 on green
+ * l12 -> led 1 on red*
+ * l20 -> led 2 off
+ * l21 -> led 2 on green
+ * l22 -> led 2 on red*
+ * l30 -> led 3 off
+ * l31 -> led 3 on green
+ * l32 -> led 3 on red*
+ 
+ NOTE: TM1638 has two color leds (green, red).  For simple color direct leds the lx2 commands performs exactly like lx1 commands.
  
  */
-
+#include "prj_cfg.h"
 #include "prj_tty_cmds.h"
 #include "prj_pinout.h"
 #include "prj_dre.h"
@@ -23,32 +29,15 @@ uint8_t ledToChange=0;
 
 void handle3rdCharForLed(uchar_t inByte){
   uint8_t value;
-  if (inByte=='0'){
-    value=LOW;
-  } 
-  else {
-    value=HIGH;
-  }
-  if (ledToChange>0 && ledToChange<=4) {
-    dre.ledState[ledToChange-1]=value;
+  
+  value=inByte-'0';
+  if (ledToChange>=0 && ledToChange<NUM_LEDS) {
+    dre.ledState[ledToChange]=value;
   }
 }
 
 void handle2ndCharForLed(uchar_t inByte){
-  switch (inByte) {
-  case 'a':
-    ledToChange=1;
-    break;
-  case 'b':    
-    ledToChange=2;
-    break;
-  case 'c':    
-    ledToChange=3;
-    break;
-  case 'd':    
-    ledToChange=4;
-    break;
-  }
+  ledToChange=inByte-'0';
 }
 
 /***** Finite State Machine *****/
@@ -110,5 +99,6 @@ void ttyCmdHandle(uint8_t times){
     }
   }
 }
+
 
 

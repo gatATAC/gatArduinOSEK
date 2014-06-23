@@ -4,15 +4,16 @@
 #define _PRJ_DRE_H
 
 #include "gttc_types.h"
+#include "prj_cfg.h"
 
 typedef struct {
 
   /*** Input ***/
   /** Led statuses **/
-  uint8_t ledState[4];             // ledState used to set the LED
+  uint8_t ledState[NUM_LEDS];             // ledState used to set the LED
 
   /** Button statuses **/
-  uint8_t buttonState[4];         // variable for reading the pushbutton status
+  uint8_t buttonState[NUM_BUTTONS];         // variable for reading the pushbutton status
 } 
 t_dre;
 

@@ -5,16 +5,12 @@
 
 #include "gttc_types.h"
 
-/** Input pins **/
-#define ledPin1 ((const uint8_t)13)
-#define ledPin2 ((const uint8_t)12)
-#define ledPin3 ((const uint8_t)11)
-#define ledPin4 ((const uint8_t)10)
+#ifndef CFG_USE_TM1638
+extern uint8_t ledPin[NUM_LEDS];
+extern uint8_t buttonPin[NUM_BUTTONS];
+#endif
 
-/** Output pins **/
-#define buttonPin1 ((const uint8_t)2)
-#define buttonPin2 ((const uint8_t)3)
-#define buttonPin3 ((const uint8_t)4)
-#define buttonPin4 ((const uint8_t)5)
+void pinoutInit(void);
 
 #endif // _PRJ_PINOUT_H
+

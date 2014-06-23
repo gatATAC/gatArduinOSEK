@@ -23,6 +23,7 @@
 /* ---------------------------------------*/
 
 /***** Project configuration includes *****/
+#include "prj_cfg.h"
 #include "prj_pinout.h" // <-- The pinout of the project
 #include "prj_dre.h"    // <-- The DRE of the project (global variables pools to share)
 #include "prj_input.h"  // <-- The input module reads the microcontroller pinout
@@ -33,6 +34,13 @@
 #include "prj_tty_cmds.h"
 /*** Status broadcast ***/
 #include "prj_tty_brcast.h"
+
+#ifdef CFG_USE_TM1638
+#include <TM1638.h>
+
+// define a module on data pin 8, clock pin 9 and strobe pin 7
+TM1638 module(8, 9, 7);
+#endif
 
 /* ---------------------------------------*/
 
@@ -83,6 +91,7 @@ void loop()
     timSync=timerSync();
   }
 }
+
 
 
 
