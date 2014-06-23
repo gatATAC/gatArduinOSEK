@@ -7,6 +7,8 @@
 #include "prj_dre.h"
 #include "prj_tty_brcast.h"
 
+#ifndef CFG_USE_I2C
+
 uint8_t contButton=BUTTON_BROADCAST_PERIOD_CYCLES;
 uint8_t currentPacket=0;
 
@@ -46,7 +48,8 @@ void buttonBroadcast(void) {
   }
 }
 
-#ifdef CFG_USE_I2C
+#else
+
 #include <Wire.h>
 extern TwoWire Wire;
 char bufButtons[NUM_BUTTONS+1];
@@ -58,7 +61,6 @@ void sendI2cData(void){
     bufButtons[i]=dre.buttonState[i]+'0';
   }
   bufButtons[8]='\0';
-  Serial.println(bufButtons);
   Wire.write(bufButtons);
 }
 #endif

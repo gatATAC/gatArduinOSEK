@@ -55,10 +55,10 @@ void setup() {
   dreInit();
   prjInputInit();
   prjOutputInit();
+#ifndef CFG_USE_I2C  
   // initialize serial communication at 115200 bits per second:
   Serial.begin(115200);
-  
-#ifdef CFG_USE_I2C  
+#else  
  // initialize i2c as slave
  Wire.begin(SLAVE_ADDRESS);
  
@@ -79,12 +79,14 @@ void loop()
 
   prjInput();
 
+#ifndef CFG_USE_I2C  
   // Button statuses broadcast through serial console
   buttonBroadcast();
 
   // Serial console commands handling (see prj_tty_cmds.h for protocol and functionality)
   // We will try to read and parse 3 times on each loop, so as to allow at least 3 characters (a command) if they come separately
   ttyCmdHandle(3);
+#endif
 
   prjOutput();
 
@@ -96,10 +98,12 @@ void loop()
     if ((CYCLE_TIME_MICROS-elapsedMicros)>CYCLE_SECURITY_TIME_MICROS){
 
 
+#ifndef CFG_USE_I2C  
       /* As the remaining time is bigger than a secure quantity, we will try to perform a serial console parsing action, in order to reduce the answering time. */
       /* This security time must be set depending on the project (and depending of the worst case expected time for this command parsing action).  The quantity is part of the project
        configuration, not part of the OSEK configuration.  In this case it is part of the prj_tty_cmd.h file */
       ttyCmdHandle(1);      
+#endif
     }
     // timerSync returns true when the end of cycle syncronization time expired.
     timSync=timerSync();

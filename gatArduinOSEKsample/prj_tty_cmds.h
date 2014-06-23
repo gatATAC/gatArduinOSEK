@@ -5,9 +5,9 @@
 
 #define CYCLE_SECURITY_TIME_MICROS 100L
 
+#ifndef CFG_USE_I2C
 void ttyCmdHandle(uint8_t times);
-
-#ifdef CFG_USE_I2C
+#else
 // callback for received data
 void receiveI2cData(int byteCount);
 #endif

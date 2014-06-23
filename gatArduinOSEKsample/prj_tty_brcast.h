@@ -12,9 +12,9 @@
 #define BUTTON_BROADCAST_PERIOD_MICROS 50000L
 #define BUTTON_BROADCAST_PERIOD_CYCLES (BUTTON_BROADCAST_PERIOD_MICROS/CYCLE_TIME_MICROS)
 
+#ifndef CFG_USE_I2C
 void buttonBroadcast(void);
-
-#ifdef CFG_USE_I2C
+#else
 void sendI2cData(void);
 #endif
 

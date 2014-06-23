@@ -89,6 +89,8 @@ void ttyCmdParse(uchar_t charReceived){
 
 }
 
+#ifndef CFG_USE_I2C
+
 void ttyCmdHandle(uint8_t times){
   // We will try to read and parse N times
   uint8_t i;
@@ -100,7 +102,7 @@ void ttyCmdHandle(uint8_t times){
   }
 }
 
-#ifdef CFG_USE_I2C
+#else
 
 #include <Wire.h>
 extern TwoWire Wire;
