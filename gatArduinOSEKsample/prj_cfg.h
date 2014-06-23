@@ -1,7 +1,7 @@
 #ifndef _PRJ_CFG_H
 #define _PRJ_CFG_H
 
-#define CFG_USE_TM1638 1
+//#define CFG_USE_TM1638 1
 
 #ifdef CFG_USE_TM1638
 #define NUM_LEDS 8

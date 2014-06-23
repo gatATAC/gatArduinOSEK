@@ -12,13 +12,13 @@ extern TM1638 module;
 
 void prjOutputInit(void){
 #ifdef CFG_USE_TM1638
-  // Do nothing
+
 #else
-  // set the digital pin as output:
-  pinMode(ledPin1, OUTPUT);      
-  pinMode(ledPin2, OUTPUT);      
-  pinMode(ledPin3, OUTPUT);      
-  pinMode(ledPin4, OUTPUT); 
+  uint8_t i;
+  for (i=0;i<NUM_LEDS;i++) {
+    // set the digital pin as output:
+    pinMode(ledPin[i], OUTPUT);      
+  }
 #endif
 }
 

@@ -6,8 +6,8 @@
 #include "gttc_types.h"
 
 #ifndef CFG_USE_TM1638
-extern uint8_t ledPin[NUM_LEDS];
-extern uint8_t buttonPin[NUM_BUTTONS];
+extern const uint8_t ledPin[];
+extern const uint8_t buttonPin[];
 #endif
 
 void pinoutInit(void);
