@@ -100,5 +100,35 @@ void ttyCmdHandle(uint8_t times){
   }
 }
 
+#ifdef CFG_USE_I2C
 
+#include <Wire.h>
+extern TwoWire Wire;
 
+double temp=22.0;
+int number = 0;
+int state = 0;
+
+// callback for received data
+void receiveI2cData(int byteCount){
+ 
+ while(Wire.available()) {
+  number = Wire.read();
+ 
+  if (number == 1){
+   if (state == 0){
+    digitalWrite(13, HIGH); // set the LED on
+    state = 1;
+   } else{
+    digitalWrite(13, LOW); // set the LED off
+    state = 0;
+   }
+  }
+ 
+  if(number==2) {
+   number = (int)temp;
+  }
+ }
+}
+
+#endif

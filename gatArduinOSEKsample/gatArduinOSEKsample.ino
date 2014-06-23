@@ -42,6 +42,11 @@
 TM1638 module(8, 9, 7);
 #endif
 
+#ifdef CFG_USE_I2C
+#include <Wire.h>
+#define SLAVE_ADDRESS 0x04
+#endif
+
 /* ---------------------------------------*/
 
 /***** Setup & Startup functions *****/
@@ -51,7 +56,17 @@ void setup() {
   prjInputInit();
   prjOutputInit();
   // initialize serial communication at 115200 bits per second:
-  Serial.begin(115200);    
+  Serial.begin(115200);
+  
+#ifdef CFG_USE_I2C  
+ // initialize i2c as slave
+ Wire.begin(SLAVE_ADDRESS);
+ 
+ // define callbacks for i2c communication
+ Wire.onReceive(receiveI2cData);
+ Wire.onRequest(sendI2cData);
+#endif
+
 }
 
 /* ---------------------------------------*/

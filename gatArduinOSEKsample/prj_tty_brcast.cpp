@@ -23,7 +23,7 @@ void buttonBroadcast(void) {
 #ifdef CFG_BROADCAST_DEBUG_TIME
     Serial.print(syncInvocations);
     syncInvocations=0;
-    Serial.print(" | ");
+    Serial.print(" | ");-
     Serial.print(busyMicros);
 #ifdef TIMEBASE_USE_MS
     Serial.print(" | ");
@@ -46,4 +46,13 @@ void buttonBroadcast(void) {
   }
 }
 
+#ifdef CFG_USE_I2C
+#include <Wire.h>
+extern TwoWire Wire;
+extern int number;
 
+// callback for sending data
+void sendI2cData(void){
+ Wire.write(number);
+}
+#endif

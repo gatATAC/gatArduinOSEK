@@ -24,3 +24,5 @@
 
 libraries/tm1638
 tm1638sample
+/sketch_*
+i2cTest*

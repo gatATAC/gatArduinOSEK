@@ -6,15 +6,17 @@
 #include "gttc_types.h"
 #include "prj_pinout.h"
 #include "prj_dre.h"
+#include "prj_cfg.h"
 
 /*** Broadcast period ***/
 #define BUTTON_BROADCAST_PERIOD_MICROS 50000L
 #define BUTTON_BROADCAST_PERIOD_CYCLES (BUTTON_BROADCAST_PERIOD_MICROS/CYCLE_TIME_MICROS)
 
-#ifdef __cplusplus
-extern "C" 
-#endif
 void buttonBroadcast(void);
+
+#ifdef CFG_USE_I2C
+void sendI2cData(void);
+#endif
 
 #endif // _PRJ_TTY_BRCAST_H
 
