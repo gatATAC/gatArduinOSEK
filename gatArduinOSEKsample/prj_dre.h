@@ -5,6 +5,8 @@
 
 #include "gttc_types.h"
 #include "prj_cfg.h"
+#include "prj_input.h"
+#include "prj_output.h"
 
 typedef struct {
 
