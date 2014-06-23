@@ -49,10 +49,16 @@ void buttonBroadcast(void) {
 #ifdef CFG_USE_I2C
 #include <Wire.h>
 extern TwoWire Wire;
-extern int number;
+char bufButtons[NUM_BUTTONS+1];
 
 // callback for sending data
 void sendI2cData(void){
- Wire.write(number);
+  uint8_t i;
+  for (i=0;i<NUM_BUTTONS;i++){
+    bufButtons[i]=dre.buttonState[i]+'0';
+  }
+  bufButtons[8]='\0';
+  Serial.println(bufButtons);
+  Wire.write(bufButtons);
 }
 #endif
