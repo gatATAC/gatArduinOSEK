@@ -10,7 +10,7 @@ Includes:
 
 Please visit these web pages for more information:
 
-https://github.com/txinto/gatArduinOSEK
-http://gatatac.org/projects/gttcosarduino/wiki
-http://gatatac.org/projects/gttcosarduino/wiki/GatArduinOSEKino_example_1
+* https://github.com/txinto/gatArduinOSEK
+* http://gatatac.org/projects/gttcosarduino/wiki
+* http://gatatac.org/projects/gttcosarduino/wiki/GatArduinOSEKino_example_1
 
