@@ -1,3 +1,4 @@
+#include "gttc_timer.h"
 #include "prj_cfg.h"
 #include "prj_output.h"
 #include "prj_pinout.h"
@@ -12,7 +13,7 @@ extern TM1638 module;
 
 void prjOutputInit(void){
 #ifdef CFG_USE_TM1638
-
+  module.setDisplayToDecNumber(101010, 0);
 #else
   uint8_t i;
   for (i=0;i<NUM_LEDS;i++) {
@@ -23,7 +24,6 @@ void prjOutputInit(void){
 }
 
 void prjOutput(void){
-  // Do nothing
   uint8_t i;
   for (i=0;i<NUM_LEDS;i++){
     if (dre.ledState[i]>0){
@@ -45,6 +45,9 @@ void prjOutput(void){
       digitalWrite(ledPin[i],LOW);
 #endif
     }
+#ifdef CFG_USE_TM1638
+      module.setDisplayToDecNumber(syncInvocations, 0);
+#endif
   }
 }
 

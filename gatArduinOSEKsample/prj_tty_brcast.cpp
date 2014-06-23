@@ -8,18 +8,19 @@
 #include "prj_tty_brcast.h"
 
 uint8_t contButton=BUTTON_BROADCAST_PERIOD_CYCLES;
+uint8_t currentPacket=0;
 
 void buttonBroadcast(void) {
-  
+
   uint8_t i;
   char bufaux[2];
-  
+
   // Vemos si nos toca refrescarlos o no
   contButton--;
   if (contButton<=0){
     contButton=BUTTON_BROADCAST_PERIOD_CYCLES;
     // Los volcamos por el puerto serie
-
+#ifdef CFG_BROADCAST_DEBUG_TIME
     Serial.print(syncInvocations);
     syncInvocations=0;
     Serial.print(" | ");
@@ -33,14 +34,16 @@ void buttonBroadcast(void) {
     Serial.print(" | ");
     Serial.print(previousMicros);
     Serial.print(" -> ");
-    for (i=0;i<NUM_BUTTONS;i++){
-      Serial.print("Boton");
-      Serial.print(itoa(i,bufaux,10));
-      Serial.print(": ");
-      Serial.print(dre.buttonState[i]);
-      Serial.print(" | ");
+#endif
+    Serial.print(dre.buttonState[currentPacket]);
+    currentPacket++;
+    if (currentPacket>=NUM_BUTTONS){
+      currentPacket=0;
+      Serial.println();
+    } else {
+      Serial.print(" ");
     }
-    Serial.println("");
   }
 }
+
 

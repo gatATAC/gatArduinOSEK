@@ -60,7 +60,6 @@ void setup() {
 
 void loop()
 {
-
   // ----------- Functionality ----------------
 
   prjInput();
@@ -79,7 +78,7 @@ void loop()
   // Now the microcontroller will loose time until the end of cycle sincronization time expires
   boolean timSync=timerSync();
   while(timSync==false){
-    if ((CYCLE_TIME_MICROS-busyMicros)>CYCLE_SECURITY_TIME_MICROS){
+    if ((CYCLE_TIME_MICROS-elapsedMicros)>CYCLE_SECURITY_TIME_MICROS){
 
 
       /* As the remaining time is bigger than a secure quantity, we will try to perform a serial console parsing action, in order to reduce the answering time. */
