@@ -13,6 +13,9 @@
  -- Please visit the wiki page for this project in http://gatatac.org/projects/gttcosarduino/wiki/GatArduinOSEKino_example_1
  
  
+/***** Project configuration include (before OSEK includes to allow OSEK configuration ******/
+#include "prj_cfg.h"
+ 
 /***** gatArduinOSEK includes *****/
 /*** Types ***/
 #include <gttc_types.h>
@@ -22,8 +25,7 @@
 
 /* ---------------------------------------*/
 
-/***** Project configuration includes *****/
-#include "prj_cfg.h"
+/***** Project includes *****/
 #include "prj_pinout.h" // <-- The pinout of the project
 #include "prj_dre.h"    // <-- The DRE of the project (global variables pools to share)
 #include "prj_input.h"  // <-- The input module reads the microcontroller pinout

@@ -46,7 +46,7 @@ void prjOutput(void){
 #endif
     }
 #ifdef CFG_USE_TM1638
-      module.setDisplayToDecNumber(busyMicros, 0);
+      module.setDisplayToDecNumber(CYCLE_TIME_MICROS-busyMicros, 0);
 #endif
   }
 }
