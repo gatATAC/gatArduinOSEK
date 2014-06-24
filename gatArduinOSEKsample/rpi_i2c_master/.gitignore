@@ -1,3 +1,5 @@
 i2cLoop
 i2cTest
+i2cFork
 !*.c
+*~
