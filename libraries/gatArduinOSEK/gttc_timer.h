@@ -5,7 +5,7 @@
 
 #include "gttc_types.h"
 
-#define CYCLE_TIME_MICROS 40000L
+#define CYCLE_TIME_MICROS 50000L
 #define TIME_MICROS_MAX 4294967295L
 #define TIME_MS_MAX 4294967295L
 
