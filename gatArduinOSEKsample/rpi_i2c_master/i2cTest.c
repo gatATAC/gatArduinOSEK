@@ -67,8 +67,8 @@ arg++
 #endif
     }
     usleep(I2C_WAIT);
-      char buf[]="01234567";
-      if (read(file, buf, 8) == 8) {
+      char buf[]="01234567s";
+      if (read(file, buf, 9) == 9) {
 #ifndef DEBUG_I2C_LOAD
     printf("Received %s    \n", buf);
 #endif

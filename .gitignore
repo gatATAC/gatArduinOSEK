@@ -23,6 +23,5 @@
 *.hex
 
 libraries/tm1638
-/*sample*
 /sketch_*
 /*Test*
