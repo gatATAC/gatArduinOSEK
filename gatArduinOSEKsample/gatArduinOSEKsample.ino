@@ -39,13 +39,19 @@
 #include <TM1638.h>
 
 // define a module on data pin 8, clock pin 9 and strobe pin 7
-TM1638 module(8, 9, 7);
+TM1638 module(11, 2, 12);
 #endif
 
 #ifdef CFG_USE_I2C
 #include <Wire.h>
 #define SLAVE_ADDRESS 0x04
 #endif
+
+#ifdef CFG_USE_LCD
+  #include <LiquidCrystal.h>
+  #include "prj_lcd.h"
+#endif
+
 
 /* ---------------------------------------*/
 
@@ -59,14 +65,17 @@ void setup() {
   // initialize serial communication at 115200 bits per second:
   Serial.begin(115200);
 #else  
- // initialize i2c as slave
- Wire.begin(SLAVE_ADDRESS);
- 
- // define callbacks for i2c communication
- Wire.onReceive(receiveI2cData);
- Wire.onRequest(sendI2cData);
+  // initialize i2c as slave
+  Wire.begin(SLAVE_ADDRESS);
+
+  // define callbacks for i2c communication
+  Wire.onReceive(receiveI2cData);
+  Wire.onRequest(sendI2cData);
 #endif
 
+#ifdef CFG_USE_LCD
+  prj_lcd_setup();
+#endif
 }
 
 /* ---------------------------------------*/
@@ -86,6 +95,10 @@ void loop()
   // Serial console commands handling (see prj_tty_cmds.h for protocol and functionality)
   // We will try to read and parse 3 times on each loop, so as to allow at least 3 characters (a command) if they come separately
   ttyCmdHandle(3);
+#endif
+
+#ifdef CFG_USE_LCD
+  prj_lcd_process();
 #endif
 
   prjOutput();
@@ -109,6 +122,7 @@ void loop()
     timSync=timerSync();
   }
 }
+
 
 
 

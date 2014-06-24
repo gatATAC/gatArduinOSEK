@@ -36,8 +36,29 @@ void handle3rdCharForLed(uchar_t inByte){
   }
 }
 
+boolean flagRPiStatus=false;
+
+void handle3rdCharForRPi(uchar_t inByte){
+  if (flagRPiStatus==true){
+    dre.rpiStatus=inByte-'0';
+    flagRPiStatus=false;
+  }
+}
+
+
 void handle2ndCharForLed(uchar_t inByte){
   ledToChange=inByte-'0';
+}
+
+void handle2ndCharForRPi(uchar_t inByte){
+  switch(inByte){
+    case 's':
+        flagRPiStatus=true;
+      break;
+    default:
+        flagRPiStatus=false;
+      break;
+  }
 }
 
 /***** Finite State Machine *****/
@@ -50,6 +71,7 @@ void handle2ndCharForLed(uchar_t inByte){
 #define COMMAND_IDLE 0
 #define COMMAND_LED 1
 #define COMMAND_MESSAGE 2
+#define COMMAND_RPI 3
 
 uchar_t parseState = PARSING_COMMAND;
 uint8_t command=COMMAND_IDLE;
@@ -60,6 +82,10 @@ void ttyCmdParse(uchar_t charReceived){
     case 'l':
       // Led command
       command=COMMAND_LED;
+      break;
+    case 'r':
+      // RPi command
+      command=COMMAND_RPI;
       break;
     default:
       command=COMMAND_IDLE;
@@ -73,6 +99,9 @@ void ttyCmdParse(uchar_t charReceived){
       // Led command
       handle2ndCharForLed(charReceived);
       break;
+    case COMMAND_RPI:
+      handle2ndCharForRPi(charReceived);
+      break;
     }
     parseState=PARSING_ARGUMENT2;
     break;
@@ -81,6 +110,9 @@ void ttyCmdParse(uchar_t charReceived){
     case COMMAND_LED:
       // Led command
       handle3rdCharForLed(charReceived);
+      break;
+    case COMMAND_RPI:
+      handle3rdCharForRPi(charReceived);
       break;
     }
     parseState=PARSING_COMMAND;

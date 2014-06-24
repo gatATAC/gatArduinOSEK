@@ -8,6 +8,12 @@
 #include "prj_input.h"
 #include "prj_output.h"
 
+#define RPI_STATUS_UNKNOWN 0
+#define RPI_STATUS_INIT 1
+#define RPI_STATUS_READY 2
+#define RPI_STATUS_GOINGOFF 3
+#define RPI_STATUS_OFF 4
+
 typedef struct {
 
   /*** Input ***/
@@ -16,6 +22,8 @@ typedef struct {
 
   /** Button statuses **/
   uint8_t buttonState[NUM_BUTTONS];         // variable for reading the pushbutton status
+  
+  uint8_t rpiStatus;
 } 
 t_dre;
 

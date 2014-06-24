@@ -23,6 +23,6 @@
 *.hex
 
 libraries/tm1638
-tm1638sample
+/*sample*
 /sketch_*
-i2cTest*
+/*Test*

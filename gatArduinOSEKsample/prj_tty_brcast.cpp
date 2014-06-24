@@ -52,7 +52,7 @@ void buttonBroadcast(void) {
 
 #include <Wire.h>
 extern TwoWire Wire;
-char bufButtons[NUM_BUTTONS+1];
+char bufButtons[NUM_BUTTONS+2];
 
 // callback for sending data
 void sendI2cData(void){
@@ -60,7 +60,8 @@ void sendI2cData(void){
   for (i=0;i<NUM_BUTTONS;i++){
     bufButtons[i]=dre.buttonState[i]+'0';
   }
-  bufButtons[8]='\0';
+  bufButtons[NUM_BUTTONS]=dre.rpiStatus+'\0';
+  bufButtons[NUM_BUTTONS+1]='\0';
   Wire.write(bufButtons);
 }
 #endif

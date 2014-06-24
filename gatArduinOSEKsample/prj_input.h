@@ -7,14 +7,7 @@
 #define NUM_BUTTONS 4
 #endif
 
-#ifdef __cplusplus
-extern "C" 
-#endif
 void prjInputInit(void);
-
-#ifdef __cplusplus
-extern "C" 
-#endif
 void prjInput(void);
 
 #endif /* _PRJ_INPUT_H */
