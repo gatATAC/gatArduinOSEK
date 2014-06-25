@@ -12,6 +12,9 @@ extern TM1638 module;
 #endif
 
 void prjOutputInit(void){
+  // set the digital pin as output:
+  pinMode(LED_RPI_STATUS, OUTPUT);
+
 #ifdef CFG_USE_TM1638
   module.setDisplayToDecNumber(101010, 0);
 #else
@@ -21,6 +24,96 @@ void prjOutputInit(void){
     pinMode(ledPin[i], OUTPUT);      
   }
 #endif
+}
+
+#define RPI_LED_STATE_INIT 0
+#define RPI_LED_STATE_BLINKING_ON 1
+#define RPI_LED_STATE_BLINKING_OFF 2
+#define RPI_LED_STATE_ON 3
+#define RPI_LED_STATE_OFF 4
+
+#define RPI_PERIOD_INIT 20
+#define RPI_PERIOD_GOINGOFF 20
+
+uint8_t rpiLedState = RPI_LED_STATE_INIT;
+uint8_t rpiLedPeriod=RPI_PERIOD_INIT;
+uint8_t currentRPiPeriod = 0;
+
+void handleRPiStatusPin(void){
+  switch (rpiLedState){
+  case RPI_LED_STATE_INIT:
+    if (dre.rpiStatus==RPI_STATUS_INIT){
+      rpiLedState=RPI_LED_STATE_BLINKING_ON;
+      rpiLedPeriod=RPI_PERIOD_INIT;
+      currentRPiPeriod = 0;
+      digitalWrite(LED_RPI_STATUS, HIGH);
+    }
+    break;
+  case RPI_LED_STATE_BLINKING_ON:
+    if (dre.rpiStatus==RPI_STATUS_READY){
+      rpiLedState=RPI_LED_STATE_ON;
+      currentRPiPeriod = 0;
+     digitalWrite(LED_RPI_STATUS, HIGH);
+    } 
+    else {
+      if (dre.rpiStatus==RPI_STATUS_OFF){
+        rpiLedState=RPI_LED_STATE_OFF;
+        currentRPiPeriod = 0;
+        digitalWrite(LED_RPI_STATUS, LOW);
+      } 
+      else {
+        if (currentRPiPeriod>=rpiLedPeriod){
+          rpiLedState=RPI_LED_STATE_BLINKING_OFF;
+          currentRPiPeriod = 0;          
+          digitalWrite(LED_RPI_STATUS, LOW);
+        } 
+        else {
+          currentRPiPeriod++;
+        }
+      }
+    }
+    break;
+  case RPI_LED_STATE_BLINKING_OFF:
+    if (dre.rpiStatus==RPI_STATUS_READY){
+      rpiLedState=RPI_LED_STATE_ON;
+      currentRPiPeriod = 0;
+      digitalWrite(LED_RPI_STATUS, HIGH);
+    } 
+    else {
+      if (dre.rpiStatus==RPI_STATUS_OFF){
+        rpiLedState=RPI_LED_STATE_OFF;
+        currentRPiPeriod = 0;
+        digitalWrite(LED_RPI_STATUS, LOW);
+      } 
+      else {
+        if (currentRPiPeriod>=rpiLedPeriod){
+          rpiLedState=RPI_LED_STATE_BLINKING_ON;
+          digitalWrite(LED_RPI_STATUS, HIGH);
+          currentRPiPeriod = 0;          
+        } 
+        else {
+          currentRPiPeriod++;
+        }
+      }
+    }
+    break;
+  case RPI_LED_STATE_ON:
+    if (dre.rpiStatus==RPI_STATUS_GOINGOFF){
+      rpiLedState=RPI_LED_STATE_BLINKING_ON;
+      rpiLedPeriod=RPI_PERIOD_GOINGOFF;
+      currentRPiPeriod = 0;
+      digitalWrite(LED_RPI_STATUS, LOW);
+    }
+    break;
+  case RPI_LED_STATE_OFF:
+    if (dre.rpiStatus==RPI_STATUS_INIT){
+      rpiLedState=RPI_LED_STATE_BLINKING_ON;
+      rpiLedPeriod=RPI_PERIOD_INIT;
+      currentRPiPeriod = 0;
+      digitalWrite(LED_RPI_STATUS, HIGH);
+    }
+    break;
+  }
 }
 
 void prjOutput(void){
@@ -46,9 +139,11 @@ void prjOutput(void){
 #endif
     }
 #ifdef CFG_USE_TM1638
-      module.setDisplayToDecNumber(CYCLE_TIME_MICROS-busyMicros, 0);
+    module.setDisplayToDecNumber(CYCLE_TIME_MICROS-busyMicros, 0);
 #endif
   }
+  handleRPiStatusPin();
 }
+
 
 

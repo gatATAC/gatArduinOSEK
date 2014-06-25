@@ -10,6 +10,8 @@ extern const uint8_t ledPin[];
 extern const uint8_t buttonPin[];
 #endif
 
+#define LED_RPI_STATUS 13
+
 void pinoutInit(void);
 
 #endif // _PRJ_PINOUT_H

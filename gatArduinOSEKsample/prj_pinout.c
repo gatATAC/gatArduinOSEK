@@ -8,6 +8,6 @@ const uint8_t buttonPin[]={2,3,4,5};
 #endif
 
 void pinoutInit(void){
-  
+
 }
 
