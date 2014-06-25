@@ -60,7 +60,7 @@ void sendI2cData(void){
   for (i=0;i<NUM_BUTTONS;i++){
     bufButtons[i]=dre.buttonState[i]+'0';
   }
-  bufButtons[NUM_BUTTONS]=dre.rpiStatus+'\0';
+  bufButtons[NUM_BUTTONS]=dre.rpiStatus+'0';
   bufButtons[NUM_BUTTONS+1]='\0';
   Wire.write(bufButtons);
 }

@@ -40,7 +40,10 @@ boolean flagRPiStatus=false;
 
 void handle3rdCharForRPi(uchar_t inByte){
   if (flagRPiStatus==true){
-    dre.rpiStatus=inByte-'0';
+    uint8_t newStatus=inByte-'0';
+    if (newStatus>=RPI_STATUS_MIN && newStatus<=RPI_STATUS_MAX){
+      dre.rpiStatus=newStatus;
+    }
     flagRPiStatus=false;
   }
 }
@@ -82,28 +85,34 @@ void ttyCmdParse(uchar_t charReceived){
     case 'l':
       // Led command
       command=COMMAND_LED;
+      parseState=PARSING_ARGUMENT1;
       break;
     case 'r':
       // RPi command
       command=COMMAND_RPI;
+      parseState=PARSING_ARGUMENT1;
       break;
     default:
       command=COMMAND_IDLE;
       break;
     }
-    parseState=PARSING_ARGUMENT1;
     break;
   case PARSING_ARGUMENT1:
     switch (command){
     case COMMAND_LED:
       // Led command
       handle2ndCharForLed(charReceived);
+      parseState=PARSING_ARGUMENT2;
       break;
     case COMMAND_RPI:
       handle2ndCharForRPi(charReceived);
+      parseState=PARSING_ARGUMENT2;
+      break;
+    default:
+      command=COMMAND_IDLE;
+      parseState=PARSING_COMMAND;
       break;
     }
-    parseState=PARSING_ARGUMENT2;
     break;
   case PARSING_ARGUMENT2:
     switch (command){
@@ -114,11 +123,13 @@ void ttyCmdParse(uchar_t charReceived){
     case COMMAND_RPI:
       handle3rdCharForRPi(charReceived);
       break;
+    default:
+      command=COMMAND_IDLE;
+      break;
     }
     parseState=PARSING_COMMAND;
     break;
   }
-
 }
 
 #ifndef CFG_USE_I2C

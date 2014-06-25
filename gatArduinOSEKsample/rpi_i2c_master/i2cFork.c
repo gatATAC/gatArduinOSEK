@@ -12,7 +12,7 @@
 // The Arduino board i2c address
 #define ADDRESS 0x04
 
-#define I2C_WAIT 10000
+#define I2C_WAIT 40000
 
 // The I2C bus: This is for V2 pi's. For V1 Model B you need i2c-0
 static const char *devName = "/dev/i2c-1";
@@ -82,6 +82,7 @@ int main(int argc, char** argv) {
 						fprintf(stderr, "Parent: could not read from pipe\n");
 						exit(1);
 					}
+					bufPipe[1]='\0';
 					break;
 				case 0:
 					// La pipe ha sido cerrada
@@ -90,17 +91,18 @@ int main(int argc, char** argv) {
 					break;
 				default:
 					// Hemos recibido un comando
+					bufPipe[nread]='\0';
 					if (bufPipe[0]=='q'){
-						printf("Recibimos una petición de salida!!!!\n");
+						printf("Exit request received!!!!\n");
 						salida=TRUE;
 					} else {
-						printf("Recibimos el comando %s\n",bufPipe);
+						printf("Sending %s through I2C...\n",bufPipe);
 					}
 				break;
 			}
 			if (salida == FALSE) {
 				///// Escribimos el comando de petición
-				if (write(file, bufPipe, 3) == 3) {
+				if (write(file, bufPipe, strlen(bufPipe)) == strlen(bufPipe)) {
 					// Todo bien
 				}
 				usleep(I2C_WAIT);
