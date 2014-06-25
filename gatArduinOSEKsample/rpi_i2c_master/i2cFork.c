@@ -126,11 +126,11 @@ int main(int argc, char** argv) {
 	{
 		bool salida=FALSE;
 
-			printf("Soy el proceso hijo con el fd %d y childpid %d\n",fd[1],childpid);
+		printf("Child process with pipe handler fd %d and childpid %d\n",fd[1],childpid);
 		while (salida==FALSE){
 			char buf[4];
 
-			printf("envía un comando (3 letras, o 'q' para salir)\n");
+			printf("Please send a command (3 characters, or 'q' to exit, or 'x' to cancel the command if you sent an incomplete one)\n");
 			scanf("%s",buf);
 			buf[3]='\0';
 
@@ -138,11 +138,11 @@ int main(int argc, char** argv) {
 				salida=TRUE;
 			}
 
-			printf("El comando que quieres enviar es %s",buf);
+			printf("Command to send:  %s",buf);
 			write(fd[1],buf,strlen(buf));
 		}
 		close (fd[1]);
 	}
-	printf("*************** Saliendooooooo con childpid %d\n",childpid);
+	printf("****** Exiting process with childpid %d\n",childpid);
 	return (EXIT_SUCCESS);
 }
