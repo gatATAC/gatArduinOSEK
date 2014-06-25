@@ -33,7 +33,7 @@ void prjOutputInit(void){
 #define RPI_LED_STATE_OFF 4
 
 #define RPI_PERIOD_INIT 20
-#define RPI_PERIOD_GOINGOFF 20
+#define RPI_PERIOD_GOINGOFF 5
 
 uint8_t rpiLedState = RPI_LED_STATE_INIT;
 uint8_t rpiLedPeriod=RPI_PERIOD_INIT;
