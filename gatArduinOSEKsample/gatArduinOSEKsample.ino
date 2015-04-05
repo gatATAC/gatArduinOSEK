@@ -60,6 +60,7 @@ TM1638 module(11, 2, 12);
 /***** Setup & Startup functions *****/
 
 void setup() {
+  timerSetCycleTime(CYCLE_TIME_IN_MICROS);
   dreInit();
   prjInputInit();
   prjOutputInit();

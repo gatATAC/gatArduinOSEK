@@ -27,6 +27,13 @@ uint32_t busyMicros = 0L;       // Stores the ellapsed time at the end of the fu
 uint32_t syncInvocations=55L;    // This variable stores the number of timerSync() function invocations during the current main loop cycle.  It is a measure of the remaining free cycle time that is wasted in the timerSync loop at the end of the main loop.
 boolean busyTimeStoreFlag=true;
 
+uint32_t cycle_time_micros=CYCLE_TIME_MICROS;
+
+/* ----------- Timer Init functions -----------*/
+void timerSetCycleTime(uint32_t cycle_time){
+	cycle_time_micros=cycle_time;
+}
+
 /* ----------- Timer Synchronization function ------------------ */
 /* This function is used to know if the main loop cycle time has expired or not */
 boolean timerSync(void){
@@ -73,7 +80,7 @@ if (currentMillis<previousMillis){
   }
   
   // Time sync expiration time check
-  if (elapsedMicros>=CYCLE_TIME_MICROS){
+  if (elapsedMicros>=cycle_time_micros){
     result=true;  // Cycle time expired, result will be true
 
     // Store the current timestamps for calculating the next cycle time

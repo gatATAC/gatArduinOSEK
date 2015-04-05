@@ -5,9 +5,8 @@
 
 #include "gttc_types.h"
 
-#ifndef CYCLE_TIME_MICROS
+/* Cycle time if no timerSetCycleTime() used */
 #define CYCLE_TIME_MICROS 40000L
-#endif
 
 #define TIME_MICROS_MAX 4294967295L
 #define TIME_MS_MAX 4294967295L
@@ -36,6 +35,10 @@ extern uint32_t syncInvocations;    // This variable stores the number of timerS
 extern "C" 
 #endif
 boolean timerSync(void);
+#ifdef __cplusplus
+extern "C" 
+#endif
+void timerSetCycleTime(uint32_t cycle_time);
 
 #endif // _GTTC_TIMER_H
 
