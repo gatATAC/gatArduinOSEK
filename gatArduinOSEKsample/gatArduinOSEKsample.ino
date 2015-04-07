@@ -66,6 +66,8 @@ TM1638 module(11, 2, 12);
 void setup() {
   timerSetCycleTime(CYCLE_TIME_IN_MICROS);
   dreInit();
+  pinoutInit();  
+  
   prjInputInit();
 
 #ifdef CFG_USE_RGB_LEDS  
