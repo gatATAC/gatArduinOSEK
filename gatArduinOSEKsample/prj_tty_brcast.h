@@ -20,3 +20,4 @@ void sendI2cData(void);
 
 #endif // _PRJ_TTY_BRCAST_H
 
+

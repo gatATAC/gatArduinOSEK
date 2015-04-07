@@ -11,13 +11,7 @@ extern TM1638 module;
 #endif
 
 void prjInputInit(void){
-#ifndef CFG_USE_TM1638
-  uint8_t i;
-  for (i=0;i<NUM_BUTTONS;i++){
-    // initialize the pushbutton pin as an input:
-    pinMode(buttonPin[i], INPUT);     
-  }
-#endif
+
 }
 
 void prjInput(void){
@@ -34,6 +28,7 @@ void prjInput(void){
 #endif
   }
 }
+
 
 
 

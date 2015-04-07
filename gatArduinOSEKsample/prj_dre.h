@@ -26,6 +26,13 @@ typedef struct {
   uint8_t buttonState[NUM_BUTTONS];         // variable for reading the pushbutton status
   
   uint8_t rpiStatus;
+  
+#ifdef CFG_USE_RGB_LEDS
+  uint8_t redLight;
+  uint8_t greenLight;
+  uint8_t blueLight;
+#endif
+  
 } 
 t_dre;
 
@@ -37,4 +44,5 @@ extern "C"
 void dreInit(void);
 
 #endif // _PRJ_DRE_H
+
 

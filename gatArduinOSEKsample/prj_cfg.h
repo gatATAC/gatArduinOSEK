@@ -6,5 +6,8 @@
 #define CFG_USE_LCD 1
 #define CYCLE_TIME_IN_MICROS 50000L
 
+// #define CFG_USE_RGB_LEDS 1
+
 #endif /* _PRJ_CFG_H */
+
 

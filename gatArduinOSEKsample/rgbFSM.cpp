@@ -1,4 +1,5 @@
 /* ['Common headers' begin (DON'T REMOVE THIS LINE!)] */
+#ifdef CFG_USE_RGB_LEDS
 #include "rgbFSM.h"
 /* ['Common headers' end (DON'T REMOVE THIS LINE!)] */
 
@@ -285,3 +286,4 @@ void rgbCycle(  )
     }
 }
 /* ['rgbCycle' end (DON'T REMOVE THIS LINE!)] */
+#endif

@@ -12,17 +12,10 @@ extern TM1638 module;
 #endif
 
 void prjOutputInit(void){
-  // set the digital pin as output:
-  pinMode(LED_RPI_STATUS, OUTPUT);
-
-#ifdef CFG_USE_TM1638
-  module.setDisplayToDecNumber(101010, 0);
-#else
-  uint8_t i;
-  for (i=0;i<NUM_LEDS;i++) {
-    // set the digital pin as output:
-    pinMode(ledPin[i], OUTPUT);      
-  }
+#ifdef CFG_USE_RGB_LEDS
+  analogWrite(redLightPin,dre.redLight);
+  analogWrite(greenLightPin,dre.greenLight);
+  analogWrite(blueLightPin,dre.blueLight);
 #endif
 }
 
@@ -143,7 +136,14 @@ void prjOutput(void){
 #endif
   }
   handleRPiStatusPin();
+  
+#ifdef CFG_USE_RGB_LEDS
+  analogWrite(redLightPin,dre.redLight);
+  analogWrite(greenLightPin,dre.greenLight);
+  analogWrite(blueLightPin,dre.blueLight);
+#endif  
 }
+
 
 
 

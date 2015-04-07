@@ -11,6 +11,7 @@ void dreInit(void){
   for (i=0;i<NUM_LEDS;i++){
     dre.ledState[i] = LOW;             // ledState used to set the LED
   }
-  dre.rpiStatus = RPI_STATUS_UNKNOWN;
+  dre.rpiStatus = RPI_STATUS_UNKNOWN;  
 }
+
 

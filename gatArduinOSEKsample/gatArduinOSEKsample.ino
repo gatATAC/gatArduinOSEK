@@ -15,7 +15,11 @@
  
 /***** Project configuration include (before OSEK includes to allow OSEK configuration ******/
 #include "prj_cfg.h"
- 
+
+#ifdef CFG_USE_RGB_LEDS
+#include "rgbFSM.h"
+#endif
+
 /***** gatArduinOSEK includes *****/
 /*** Types ***/
 #include <gttc_types.h>
@@ -63,6 +67,11 @@ void setup() {
   timerSetCycleTime(CYCLE_TIME_IN_MICROS);
   dreInit();
   prjInputInit();
+
+#ifdef CFG_USE_RGB_LEDS  
+  rgbCycle();
+#endif
+
   prjOutputInit();
 #ifndef CFG_USE_I2C  
   // initialize serial communication at 115200 bits per second:
@@ -79,6 +88,7 @@ void setup() {
 #ifdef CFG_USE_LCD
   prj_lcd_setup();
 #endif
+
 }
 
 /* ---------------------------------------*/
@@ -103,6 +113,11 @@ void loop()
 #ifdef CFG_USE_LCD
   prj_lcd_process();
 #endif
+
+#ifdef CFG_USE_RGB_LEDS  
+  rgbCycle();
+#endif
+
 
   prjOutput();
 
