@@ -1,5 +1,6 @@
-/* ['Common headers' begin (DON'T REMOVE THIS LINE!)] */
+#include "prj_cfg.h"
 #ifdef CFG_USE_RGB_LEDS
+/* ['Common headers' begin (DON'T REMOVE THIS LINE!)] */
 #include "rgbFSM.h"
 /* ['Common headers' end (DON'T REMOVE THIS LINE!)] */
 

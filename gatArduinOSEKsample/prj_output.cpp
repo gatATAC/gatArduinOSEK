@@ -121,14 +121,18 @@ void prjOutput(void){
         module.setLED(TM1638_COLOR_GREEN, i);
       }
 #else
+#ifdef CFG_USE_LEDS
       digitalWrite(ledPin[i],HIGH);
+#endif
 #endif
     } 
     else {
 #ifdef CFG_USE_TM1638
       module.setLED(TM1638_COLOR_NONE, i);
 #else
+#ifdef CFG_USE_LEDS
       digitalWrite(ledPin[i],LOW);
+#endif
 #endif
     }
 #ifdef CFG_USE_TM1638

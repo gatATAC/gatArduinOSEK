@@ -18,8 +18,8 @@ const uint8_t blueLightPin = 6;
 #endif
 
 void pinoutInit(void){
-#ifndef CFG_USE_TM1638
   uint8_t i;
+#ifdef CFG_USE_BUTTONS
   for (i=0;i<NUM_BUTTONS;i++){
     // initialize the pushbutton pin as an input:
     pinMode(buttonPin[i], INPUT);     
@@ -32,10 +32,12 @@ void pinoutInit(void){
 #ifdef CFG_USE_TM1638
   module.setDisplayToDecNumber(101010, 0);
 #else
+#ifdef CFG_USE_LEDS
   for (i=0;i<NUM_LEDS;i++) {
     // set the digital pin as output:
     pinMode(ledPin[i], OUTPUT);      
   }
+#endif
 #endif
 
 #ifdef CFG_USE_RGB_LEDS

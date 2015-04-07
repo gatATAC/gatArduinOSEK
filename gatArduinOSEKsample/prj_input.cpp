@@ -23,8 +23,10 @@ void prjInput(void){
 #ifdef CFG_USE_TM1638
     dre.buttonState[i] = (keys & (0x01<<i))>0;
 #else
+#ifdef CFG_USE_BUTTONS
     // Buttons status read
     dre.buttonState[0] = digitalRead(buttonPin[i]);
+#endif
 #endif
   }
 }
