@@ -1,0 +1,1349 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project owner="CodeDesigner" version="1.0">
+  <project_properties>
+    <object type="udRootItem">
+      <property name="id" type="long">1</property>
+      <property name="name" type="string">rgbCycle</property>
+      <settings>
+        <object type="udGeneratorCategory">
+          <property name="id" type="long">1</property>
+          <property name="Output directory" type="dirname">/home/pi/sketchbook/gatArduinOSEKsample</property>
+          <property name="Base file name" type="string">rgbFSM</property>
+          <property name="Code items file name" type="string">rgbFSM_CI</property>
+          <property name="Generate code descriptions" type="bool">1</property>
+          <property name="Synchronize before generation" type="bool">1</property>
+        </object>
+        <object type="udHiddenProjectCategory">
+          <property name="id" type="long">2</property>
+          <property name="active_language" type="string">udCPPLanguage</property>
+          <property name="project_version" type="long">2</property>
+        </object>
+        <object type="udTestSettingsCategory">
+          <property name="id" type="long">3</property>
+        </object>
+        <object type="udStateChartCategory">
+          <property name="id" type="long">4</property>
+          <property name="Invert conditions" type="bool">1</property>
+          <property name="Merge parallel transitions" type="bool">1</property>
+          <property name="Merge direct branches" type="bool">1</property>
+          <property name="Omit unused labels" type="bool">1</property>
+        </object>
+      </settings>
+    </object>
+  </project_properties>
+  <object type="udPackageItem">
+    <property name="id" type="long">2</property>
+    <property name="name" type="string">rgb</property>
+    <object type="udHStateChartDiagramItem">
+      <property name="id" type="long">3</property>
+      <property name="name" type="string">rgbCycle</property>
+      <property name="description" type="string">RGB light cycle</property>
+      <property name="diagram_type" type="string">State Chart</property>
+      <property name="generate_code" type="bool">1</property>
+      <property name="output_file" type="string">&lt;default&gt;</property>
+      <property name="active_generator" type="string">udHStateChartGenerator</property>
+      <property name="active_algorithm" type="string">udLoopCaseAlgorithm</property>
+      <property name="input_action" type="string">&lt;none&gt;</property>
+      <property name="non_blocking" type="bool">1</property>
+      <property name="inline" type="bool">0</property>
+      <diagram>
+        <object type="umlInitialItem">
+          <property name="id" type="long">1</property>
+          <property name="relative_position" type="realpoint">130.000000,40.000000</property>
+          <property name="user_data" type="serializabledynamic">
+            <object type="udInitialElementItem">
+              <property name="id" type="long">0</property>
+              <property name="name" type="string">Initial</property>
+              <property name="description" type="string">Diagram element's description...</property>
+            </object>
+          </property>
+          <property name="size" type="realpoint">20.000000,20.000000</property>
+          <property name="fill" type="brush">0,0,0,255 100</property>
+          <property name="title" type="serializabledynamicnocreate">
+            <object type="uddLabelElement">
+              <property name="id" type="long">2</property>
+              <property name="relative_position" type="realpoint">0.000000,25.000000</property>
+              <property name="size" type="realpoint">39.000000,19.000000</property>
+              <property name="text" type="string">Initial</property>
+              <property name="label_type" type="int">1</property>
+            </object>
+          </property>
+        </object>
+        <object type="umlTransitionItem">
+          <property name="id" type="long">3</property>
+          <property name="relative_position" type="realpoint">510.000000,270.000000</property>
+          <property name="user_data" type="serializabledynamic">
+            <object type="udTransElementItem">
+              <property name="id" type="long">0</property>
+              <property name="name" type="string">Boot</property>
+              <property name="description" type="string">System Boot	</property>
+              <object type="udConditionLinkItem">
+                <property name="id" type="long">-1</property>
+                <property name="name" type="string">Always</property>
+                <property name="description" type="string">Link description...</property>
+                <property name="original_code" type="string">&lt;global&gt;::Always#6</property>
+                <property name="scope" type="string">&lt;global&gt;</property>
+              </object>
+            </object>
+          </property>
+          <property name="source" type="long">1</property>
+          <property name="target" type="long">5</property>
+          <property name="label" type="serializabledynamicnocreate">
+            <object type="uddLabelElement">
+              <property name="id" type="long">4</property>
+              <property name="relative_position" type="realpoint">-57.000000,-9.000000</property>
+              <property name="size" type="realpoint">155.000000,19.000000</property>
+              <property name="text" type="string">&lt;&lt; Always() / [] &gt;&gt;</property>
+              <property name="label_type" type="int">3</property>
+            </object>
+          </property>
+        </object>
+        <object type="umlTransitionItem">
+          <property name="id" type="long">8</property>
+          <property name="relative_position" type="realpoint">510.000000,270.000000</property>
+          <property name="user_data" type="serializabledynamic">
+            <object type="udTransElementItem">
+              <property name="id" type="long">0</property>
+              <property name="name" type="string">toRed</property>
+              <property name="description" type="string">white cycle finished, proceed to cycle red.</property>
+              <object type="udConditionLinkItem">
+                <property name="id" type="long">-1</property>
+                <property name="name" type="string">EndRed</property>
+                <property name="description" type="string">Link description...</property>
+                <property name="original_code" type="string">&lt;global&gt;::EndRed#10</property>
+                <property name="scope" type="string">&lt;global&gt;</property>
+              </object>
+            </object>
+          </property>
+          <property name="source" type="long">5</property>
+          <property name="target" type="long">10</property>
+          <property name="control_points" type="listrealpoint">
+            <item>410.000000,60.000000</item>
+          </property>
+          <property name="label" type="serializabledynamicnocreate">
+            <object type="uddLabelElement">
+              <property name="id" type="long">9</property>
+              <property name="relative_position" type="realpoint">-60.000000,11.000000</property>
+              <property name="size" type="realpoint">161.000000,19.000000</property>
+              <property name="text" type="string">&lt;&lt; EndRed() / [] &gt;&gt;</property>
+              <property name="label_type" type="int">3</property>
+            </object>
+          </property>
+        </object>
+        <object type="umlTransitionItem">
+          <property name="id" type="long">16</property>
+          <property name="relative_position" type="realpoint">380.000000,270.000000</property>
+          <property name="user_data" type="serializabledynamic">
+            <object type="udTransElementItem">
+              <property name="id" type="long">0</property>
+              <property name="name" type="string">toGreen</property>
+              <property name="description" type="string">After cycling red light, now it's turn for Green one.</property>
+              <object type="udConditionLinkItem">
+                <property name="id" type="long">-1</property>
+                <property name="name" type="string">EndRed</property>
+                <property name="description" type="string">Link description...</property>
+                <property name="original_code" type="string">&lt;global&gt;::EndRed#10</property>
+                <property name="scope" type="string">&lt;global&gt;</property>
+              </object>
+            </object>
+          </property>
+          <property name="source" type="long">10</property>
+          <property name="target" type="long">13</property>
+          <property name="label" type="serializabledynamicnocreate">
+            <object type="uddLabelElement">
+              <property name="id" type="long">17</property>
+              <property name="relative_position" type="realpoint">-80.000000,-9.000000</property>
+              <property name="size" type="realpoint">161.000000,19.000000</property>
+              <property name="text" type="string">&lt;&lt; EndRed() / [] &gt;&gt;</property>
+              <property name="label_type" type="int">3</property>
+            </object>
+          </property>
+        </object>
+        <object type="umlTransitionItem">
+          <property name="id" type="long">23</property>
+          <property name="relative_position" type="realpoint">380.000000,270.000000</property>
+          <property name="user_data" type="serializabledynamic">
+            <object type="udTransElementItem">
+              <property name="id" type="long">0</property>
+              <property name="name" type="string">toWhite</property>
+              <property name="description" type="string">After cycling Blue light, now it's turn for White one.</property>
+              <object type="udConditionLinkItem">
+                <property name="id" type="long">-1</property>
+                <property name="name" type="string">EndBlue</property>
+                <property name="description" type="string">Link description...</property>
+                <property name="original_code" type="string">&lt;global&gt;::EndBlue#22</property>
+                <property name="scope" type="string">&lt;global&gt;</property>
+              </object>
+            </object>
+          </property>
+          <property name="source" type="long">18</property>
+          <property name="target" type="long">5</property>
+          <property name="label" type="serializabledynamicnocreate">
+            <object type="uddLabelElement">
+              <property name="id" type="long">24</property>
+              <property name="relative_position" type="realpoint">-82.000000,-9.000000</property>
+              <property name="size" type="realpoint">164.000000,19.000000</property>
+              <property name="text" type="string">&lt;&lt; EndBlue() / [] &gt;&gt;</property>
+              <property name="label_type" type="int">3</property>
+            </object>
+          </property>
+        </object>
+        <object type="umlTransitionItem">
+          <property name="id" type="long">21</property>
+          <property name="relative_position" type="realpoint">380.000000,270.000000</property>
+          <property name="user_data" type="serializabledynamic">
+            <object type="udTransElementItem">
+              <property name="id" type="long">0</property>
+              <property name="name" type="string">toBlue</property>
+              <property name="description" type="string">After cycling Green light, now it's turn for Blue one.</property>
+              <object type="udConditionLinkItem">
+                <property name="id" type="long">-1</property>
+                <property name="name" type="string">EndGreen</property>
+                <property name="description" type="string">Link description...</property>
+                <property name="original_code" type="string">&lt;global&gt;::EndGreen#18</property>
+                <property name="scope" type="string">&lt;global&gt;</property>
+              </object>
+            </object>
+          </property>
+          <property name="source" type="long">13</property>
+          <property name="target" type="long">18</property>
+          <property name="control_points" type="listrealpoint">
+            <item>420.000000,370.000000</item>
+          </property>
+          <property name="label" type="serializabledynamicnocreate">
+            <object type="uddLabelElement">
+              <property name="id" type="long">22</property>
+              <property name="relative_position" type="realpoint">-89.000000,-19.000000</property>
+              <property name="size" type="realpoint">178.000000,19.000000</property>
+              <property name="text" type="string">&lt;&lt; EndGreen() / [] &gt;&gt;</property>
+              <property name="label_type" type="int">3</property>
+            </object>
+          </property>
+        </object>
+        <object type="umlSubStateItem">
+          <property name="id" type="long">13</property>
+          <property name="relative_position" type="realpoint">485.000000,290.000000</property>
+          <property name="user_data" type="serializabledynamic">
+            <object type="udSCHSubDiagramElementItem">
+              <property name="id" type="long">0</property>
+              <property name="name" type="string">GreenCycle</property>
+              <property name="description" type="string">Diagram element's description...</property>
+              <property name="subdiagram" type="serializabledynamicnocreate">
+                <object type="udSStateChartDiagramItem">
+                  <property name="id" type="long">-1</property>
+                  <property name="name" type="string">GreenCycle</property>
+                  <property name="description" type="string">Increasing light cycle</property>
+                  <property name="diagram_type" type="string">State Chart</property>
+                  <property name="generate_code" type="bool">1</property>
+                  <property name="output_file" type="string">&lt;default&gt;</property>
+                  <property name="active_generator" type="string">udSStateChartGenerator</property>
+                  <property name="active_algorithm" type="string">udLoopCaseAlgorithm</property>
+                  <property name="input_action" type="string">&lt;none&gt;</property>
+                  <property name="non_blocking" type="bool">1</property>
+                  <property name="inline" type="bool">0</property>
+                  <diagram>
+                    <object type="umlInitialItem">
+                      <property name="id" type="long">1</property>
+                      <property name="relative_position" type="realpoint">190.000000,60.000000</property>
+                      <property name="user_data" type="serializabledynamic">
+                        <object type="udInitialElementItem">
+                          <property name="id" type="long">0</property>
+                          <property name="name" type="string">Initial</property>
+                          <property name="description" type="string">Diagram element's description...</property>
+                        </object>
+                      </property>
+                      <property name="size" type="realpoint">20.000000,20.000000</property>
+                      <property name="fill" type="brush">0,0,0,255 100</property>
+                      <property name="title" type="serializabledynamicnocreate">
+                        <object type="uddLabelElement">
+                          <property name="id" type="long">2</property>
+                          <property name="relative_position" type="realpoint">0.000000,25.000000</property>
+                          <property name="size" type="realpoint">39.000000,19.000000</property>
+                          <property name="text" type="string">Initial</property>
+                          <property name="label_type" type="int">1</property>
+                        </object>
+                      </property>
+                    </object>
+                    <object type="umlTransitionItem">
+                      <property name="id" type="long">3</property>
+                      <property name="relative_position" type="realpoint">510.000000,270.000000</property>
+                      <property name="user_data" type="serializabledynamic">
+                        <object type="udTransElementItem">
+                          <property name="id" type="long">0</property>
+                          <property name="name" type="string">Init</property>
+                          <property name="description" type="string">Shutdown light at beginning</property>
+                          <object type="udConditionLinkItem">
+                            <property name="id" type="long">-1</property>
+                            <property name="name" type="string">Always</property>
+                            <property name="description" type="string">Link description...</property>
+                            <property name="original_code" type="string">&lt;global&gt;::Always#6</property>
+                            <property name="scope" type="string">&lt;global&gt;</property>
+                          </object>
+                          <object type="udActionLinkItem">
+                            <property name="id" type="long">-1</property>
+                            <property name="name" type="string">shutDownLights</property>
+                            <property name="description" type="string">Link description...</property>
+                            <property name="original_code" type="string">&lt;global&gt;::shutDownLights#8</property>
+                            <property name="scope" type="string">&lt;global&gt;</property>
+                          </object>
+                        </object>
+                      </property>
+                      <property name="source" type="long">1</property>
+                      <property name="target" type="long">11</property>
+                      <property name="control_points" type="listrealpoint">
+                        <item>412.000000,93.000000</item>
+                      </property>
+                      <property name="label" type="serializabledynamicnocreate">
+                        <object type="uddLabelElement">
+                          <property name="id" type="long">4</property>
+                          <property name="relative_position" type="realpoint">-157.000000,-9.000000</property>
+                          <property name="size" type="realpoint">294.000000,19.000000</property>
+                          <property name="text" type="string">&lt;&lt; Always() / [shutDownLights()] &gt;&gt;</property>
+                          <property name="label_type" type="int">3</property>
+                        </object>
+                      </property>
+                    </object>
+                    <object type="umlFinalItem">
+                      <property name="id" type="long">5</property>
+                      <property name="relative_position" type="realpoint">710.000000,200.000000</property>
+                      <property name="user_data" type="serializabledynamic">
+                        <object type="udFinalElementItem">
+                          <property name="id" type="long">0</property>
+                          <property name="name" type="string">Final</property>
+                          <property name="description" type="string">Diagram element's description...</property>
+                        </object>
+                      </property>
+                      <property name="size" type="realpoint">20.000000,20.000000</property>
+                      <property name="title" type="serializabledynamicnocreate">
+                        <object type="uddLabelElement">
+                          <property name="id" type="long">6</property>
+                          <property name="relative_position" type="realpoint">0.000000,25.000000</property>
+                          <property name="size" type="realpoint">33.000000,19.000000</property>
+                          <property name="text" type="string">Final</property>
+                          <property name="label_type" type="int">1</property>
+                        </object>
+                      </property>
+                    </object>
+                    <object type="umlTransitionItem">
+                      <property name="id" type="long">7</property>
+                      <property name="relative_position" type="realpoint">510.000000,270.000000</property>
+                      <property name="user_data" type="serializabledynamic">
+                        <object type="udTransElementItem">
+                          <property name="id" type="long">0</property>
+                          <property name="name" type="string">End</property>
+                          <property name="description" type="string">Red light finished increasing</property>
+                          <object type="udConditionLinkItem">
+                            <property name="id" type="long">-1</property>
+                            <property name="name" type="string">EndGreen</property>
+                            <property name="description" type="string">Link description...</property>
+                            <property name="original_code" type="string">&lt;global&gt;::EndGreen#18</property>
+                            <property name="scope" type="string">&lt;global&gt;</property>
+                          </object>
+                        </object>
+                      </property>
+                      <property name="source" type="long">11</property>
+                      <property name="target" type="long">5</property>
+                      <property name="label" type="serializabledynamicnocreate">
+                        <object type="uddLabelElement">
+                          <property name="id" type="long">8</property>
+                          <property name="relative_position" type="realpoint">-80.000000,-29.000000</property>
+                          <property name="size" type="realpoint">178.000000,19.000000</property>
+                          <property name="text" type="string">&lt;&lt; EndGreen() / [] &gt;&gt;</property>
+                          <property name="label_type" type="int">3</property>
+                        </object>
+                      </property>
+                    </object>
+                    <object type="umlTransitionItem">
+                      <property name="id" type="long">9</property>
+                      <property name="relative_position" type="realpoint">510.000000,270.000000</property>
+                      <property name="user_data" type="serializabledynamic">
+                        <object type="udTransElementItem">
+                          <property name="id" type="long">0</property>
+                          <property name="name" type="string">Step</property>
+                          <property name="description" type="string">Increases light</property>
+                          <object type="udActionLinkItem">
+                            <property name="id" type="long">-1</property>
+                            <property name="name" type="string">incrGreen</property>
+                            <property name="description" type="string">Link description...</property>
+                            <property name="original_code" type="string">&lt;global&gt;::incrGreen#12</property>
+                            <property name="scope" type="string">&lt;global&gt;</property>
+                          </object>
+                          <object type="udConditionLinkItem">
+                            <property name="id" type="long">-1</property>
+                            <property name="name" type="string">NoEndGreen</property>
+                            <property name="description" type="string">Link description...</property>
+                            <property name="original_code" type="string">&lt;global&gt;::NoEndGreen#24</property>
+                            <property name="scope" type="string">&lt;global&gt;</property>
+                          </object>
+                        </object>
+                      </property>
+                      <property name="source" type="long">11</property>
+                      <property name="target" type="long">11</property>
+                      <property name="control_points" type="listrealpoint">
+                        <item>290.000000,150.000000</item>
+                        <item>270.000000,240.000000</item>
+                      </property>
+                      <property name="label" type="serializabledynamicnocreate">
+                        <object type="uddLabelElement">
+                          <property name="id" type="long">10</property>
+                          <property name="relative_position" type="realpoint">-263.000000,21.000000</property>
+                          <property name="size" type="realpoint">288.000000,19.000000</property>
+                          <property name="text" type="string">&lt;&lt; NoEndGreen() / [incrGreen()] &gt;&gt;</property>
+                          <property name="label_type" type="int">3</property>
+                        </object>
+                      </property>
+                    </object>
+                    <object type="umlSimpleStateItem">
+                      <property name="id" type="long">11</property>
+                      <property name="relative_position" type="realpoint">338.000000,170.000000</property>
+                      <property name="user_data" type="serializabledynamic">
+                        <object type="udSimpleStateElementItem">
+                          <property name="id" type="long">0</property>
+                          <property name="name" type="string">Increasing</property>
+                          <property name="description" type="string">Diagram element's description...</property>
+                        </object>
+                      </property>
+                      <property name="size" type="realpoint">104.000000,50.000000</property>
+                      <property name="fill" type="brush">254,253,211,255 100</property>
+                      <property name="title" type="serializabledynamicnocreate">
+                        <object type="uddLabelElement">
+                          <property name="id" type="long">12</property>
+                          <property name="relative_position" type="realpoint">12.000000,5.000000</property>
+                          <property name="size" type="realpoint">81.000000,19.000000</property>
+                          <property name="text" type="string">Increasing</property>
+                          <property name="label_type" type="int">1</property>
+                        </object>
+                      </property>
+                    </object>
+                  </diagram>
+                </object>
+              </property>
+            </object>
+          </property>
+          <property name="size" type="realpoint">111.000000,50.000000</property>
+          <property name="fill" type="brush">254,253,211,255 100</property>
+          <property name="title" type="serializabledynamicnocreate">
+            <object type="uddLabelElement">
+              <property name="id" type="long">14</property>
+              <property name="relative_position" type="realpoint">11.000000,5.000000</property>
+              <property name="size" type="realpoint">88.000000,19.000000</property>
+              <property name="text" type="string">GreenCycle</property>
+              <property name="label_type" type="int">1</property>
+            </object>
+          </property>
+          <property name="sign" type="serializabledynamicnocreate">
+            <object type="wxSFBitmapShape">
+              <property name="id" type="long">15</property>
+              <property name="active" type="bool">0</property>
+              <property name="hover_color" type="colour">128,128,255,255</property>
+              <property name="relative_position" type="realpoint">81.000000,30.000000</property>
+              <property name="size" type="realpoint">15.000000,5.000000</property>
+            </object>
+          </property>
+        </object>
+        <object type="umlSubStateItem">
+          <property name="id" type="long">18</property>
+          <property name="relative_position" type="realpoint">224.000000,290.000000</property>
+          <property name="user_data" type="serializabledynamic">
+            <object type="udSCHSubDiagramElementItem">
+              <property name="id" type="long">0</property>
+              <property name="name" type="string">BlueCycle</property>
+              <property name="description" type="string">Diagram element's description...</property>
+              <property name="subdiagram" type="serializabledynamicnocreate">
+                <object type="udSStateChartDiagramItem">
+                  <property name="id" type="long">-1</property>
+                  <property name="name" type="string">BlueCycle</property>
+                  <property name="description" type="string">Increasing light cycle</property>
+                  <property name="diagram_type" type="string">State Chart</property>
+                  <property name="generate_code" type="bool">1</property>
+                  <property name="output_file" type="string">&lt;default&gt;</property>
+                  <property name="active_generator" type="string">udSStateChartGenerator</property>
+                  <property name="active_algorithm" type="string">udLoopCaseAlgorithm</property>
+                  <property name="input_action" type="string">&lt;none&gt;</property>
+                  <property name="non_blocking" type="bool">1</property>
+                  <property name="inline" type="bool">0</property>
+                  <diagram>
+                    <object type="umlInitialItem">
+                      <property name="id" type="long">1</property>
+                      <property name="relative_position" type="realpoint">190.000000,60.000000</property>
+                      <property name="user_data" type="serializabledynamic">
+                        <object type="udInitialElementItem">
+                          <property name="id" type="long">0</property>
+                          <property name="name" type="string">Initial</property>
+                          <property name="description" type="string">Diagram element's description...</property>
+                        </object>
+                      </property>
+                      <property name="size" type="realpoint">20.000000,20.000000</property>
+                      <property name="fill" type="brush">0,0,0,255 100</property>
+                      <property name="title" type="serializabledynamicnocreate">
+                        <object type="uddLabelElement">
+                          <property name="id" type="long">2</property>
+                          <property name="relative_position" type="realpoint">0.000000,25.000000</property>
+                          <property name="size" type="realpoint">39.000000,19.000000</property>
+                          <property name="text" type="string">Initial</property>
+                          <property name="label_type" type="int">1</property>
+                        </object>
+                      </property>
+                    </object>
+                    <object type="umlTransitionItem">
+                      <property name="id" type="long">3</property>
+                      <property name="relative_position" type="realpoint">510.000000,270.000000</property>
+                      <property name="user_data" type="serializabledynamic">
+                        <object type="udTransElementItem">
+                          <property name="id" type="long">0</property>
+                          <property name="name" type="string">Init</property>
+                          <property name="description" type="string">Shutdown light at beginning</property>
+                          <object type="udConditionLinkItem">
+                            <property name="id" type="long">-1</property>
+                            <property name="name" type="string">Always</property>
+                            <property name="description" type="string">Link description...</property>
+                            <property name="original_code" type="string">&lt;global&gt;::Always#6</property>
+                            <property name="scope" type="string">&lt;global&gt;</property>
+                          </object>
+                          <object type="udActionLinkItem">
+                            <property name="id" type="long">-1</property>
+                            <property name="name" type="string">shutDownLights</property>
+                            <property name="description" type="string">Link description...</property>
+                            <property name="original_code" type="string">&lt;global&gt;::shutDownLights#8</property>
+                            <property name="scope" type="string">&lt;global&gt;</property>
+                          </object>
+                        </object>
+                      </property>
+                      <property name="source" type="long">1</property>
+                      <property name="target" type="long">11</property>
+                      <property name="control_points" type="listrealpoint">
+                        <item>412.000000,93.000000</item>
+                      </property>
+                      <property name="label" type="serializabledynamicnocreate">
+                        <object type="uddLabelElement">
+                          <property name="id" type="long">4</property>
+                          <property name="relative_position" type="realpoint">-157.000000,-9.000000</property>
+                          <property name="size" type="realpoint">294.000000,19.000000</property>
+                          <property name="text" type="string">&lt;&lt; Always() / [shutDownLights()] &gt;&gt;</property>
+                          <property name="label_type" type="int">3</property>
+                        </object>
+                      </property>
+                    </object>
+                    <object type="umlFinalItem">
+                      <property name="id" type="long">5</property>
+                      <property name="relative_position" type="realpoint">710.000000,200.000000</property>
+                      <property name="user_data" type="serializabledynamic">
+                        <object type="udFinalElementItem">
+                          <property name="id" type="long">0</property>
+                          <property name="name" type="string">Final</property>
+                          <property name="description" type="string">Diagram element's description...</property>
+                        </object>
+                      </property>
+                      <property name="size" type="realpoint">20.000000,20.000000</property>
+                      <property name="title" type="serializabledynamicnocreate">
+                        <object type="uddLabelElement">
+                          <property name="id" type="long">6</property>
+                          <property name="relative_position" type="realpoint">0.000000,25.000000</property>
+                          <property name="size" type="realpoint">33.000000,19.000000</property>
+                          <property name="text" type="string">Final</property>
+                          <property name="label_type" type="int">1</property>
+                        </object>
+                      </property>
+                    </object>
+                    <object type="umlTransitionItem">
+                      <property name="id" type="long">7</property>
+                      <property name="relative_position" type="realpoint">510.000000,270.000000</property>
+                      <property name="user_data" type="serializabledynamic">
+                        <object type="udTransElementItem">
+                          <property name="id" type="long">0</property>
+                          <property name="name" type="string">End</property>
+                          <property name="description" type="string">Red light finished increasing</property>
+                          <object type="udConditionLinkItem">
+                            <property name="id" type="long">-1</property>
+                            <property name="name" type="string">EndBlue</property>
+                            <property name="description" type="string">Link description...</property>
+                            <property name="original_code" type="string">&lt;global&gt;::EndBlue#22</property>
+                            <property name="scope" type="string">&lt;global&gt;</property>
+                          </object>
+                        </object>
+                      </property>
+                      <property name="source" type="long">11</property>
+                      <property name="target" type="long">5</property>
+                      <property name="label" type="serializabledynamicnocreate">
+                        <object type="uddLabelElement">
+                          <property name="id" type="long">8</property>
+                          <property name="relative_position" type="realpoint">-80.000000,-29.000000</property>
+                          <property name="size" type="realpoint">164.000000,19.000000</property>
+                          <property name="text" type="string">&lt;&lt; EndBlue() / [] &gt;&gt;</property>
+                          <property name="label_type" type="int">3</property>
+                        </object>
+                      </property>
+                    </object>
+                    <object type="umlSimpleStateItem">
+                      <property name="id" type="long">11</property>
+                      <property name="relative_position" type="realpoint">338.000000,170.000000</property>
+                      <property name="user_data" type="serializabledynamic">
+                        <object type="udSimpleStateElementItem">
+                          <property name="id" type="long">0</property>
+                          <property name="name" type="string">Increasing</property>
+                          <property name="description" type="string">Diagram element's description...</property>
+                        </object>
+                      </property>
+                      <property name="size" type="realpoint">104.000000,50.000000</property>
+                      <property name="fill" type="brush">254,253,211,255 100</property>
+                      <property name="title" type="serializabledynamicnocreate">
+                        <object type="uddLabelElement">
+                          <property name="id" type="long">12</property>
+                          <property name="relative_position" type="realpoint">12.000000,5.000000</property>
+                          <property name="size" type="realpoint">81.000000,19.000000</property>
+                          <property name="text" type="string">Increasing</property>
+                          <property name="label_type" type="int">1</property>
+                        </object>
+                      </property>
+                    </object>
+                    <object type="umlTransitionItem">
+                      <property name="id" type="long">9</property>
+                      <property name="relative_position" type="realpoint">510.000000,270.000000</property>
+                      <property name="user_data" type="serializabledynamic">
+                        <object type="udTransElementItem">
+                          <property name="id" type="long">0</property>
+                          <property name="name" type="string">Step</property>
+                          <property name="description" type="string">Increases light</property>
+                          <object type="udActionLinkItem">
+                            <property name="id" type="long">-1</property>
+                            <property name="name" type="string">incrBlue</property>
+                            <property name="description" type="string">Link description...</property>
+                            <property name="original_code" type="string">&lt;global&gt;::incrBlue#13</property>
+                            <property name="scope" type="string">&lt;global&gt;</property>
+                          </object>
+                          <object type="udConditionLinkItem">
+                            <property name="id" type="long">-1</property>
+                            <property name="name" type="string">NoEndBlue</property>
+                            <property name="description" type="string">Link description...</property>
+                            <property name="original_code" type="string">&lt;global&gt;::NoEndBlue#23</property>
+                            <property name="scope" type="string">&lt;global&gt;</property>
+                          </object>
+                        </object>
+                      </property>
+                      <property name="source" type="long">11</property>
+                      <property name="target" type="long">11</property>
+                      <property name="control_points" type="listrealpoint">
+                        <item>290.000000,150.000000</item>
+                        <item>270.000000,240.000000</item>
+                      </property>
+                      <property name="label" type="serializabledynamicnocreate">
+                        <object type="uddLabelElement">
+                          <property name="id" type="long">10</property>
+                          <property name="relative_position" type="realpoint">-193.000000,71.000000</property>
+                          <property name="size" type="realpoint">260.000000,19.000000</property>
+                          <property name="text" type="string">&lt;&lt; NoEndBlue() / [incrBlue()] &gt;&gt;</property>
+                          <property name="label_type" type="int">3</property>
+                        </object>
+                      </property>
+                    </object>
+                  </diagram>
+                </object>
+              </property>
+            </object>
+          </property>
+          <property name="size" type="realpoint">113.000000,50.000000</property>
+          <property name="fill" type="brush">254,253,211,255 100</property>
+          <property name="title" type="serializabledynamicnocreate">
+            <object type="uddLabelElement">
+              <property name="id" type="long">19</property>
+              <property name="relative_position" type="realpoint">19.000000,5.000000</property>
+              <property name="size" type="realpoint">74.000000,19.000000</property>
+              <property name="text" type="string">BlueCycle</property>
+              <property name="label_type" type="int">1</property>
+            </object>
+          </property>
+          <property name="sign" type="serializabledynamicnocreate">
+            <object type="wxSFBitmapShape">
+              <property name="id" type="long">20</property>
+              <property name="active" type="bool">0</property>
+              <property name="hover_color" type="colour">128,128,255,255</property>
+              <property name="relative_position" type="realpoint">83.000000,30.000000</property>
+              <property name="size" type="realpoint">15.000000,5.000000</property>
+            </object>
+          </property>
+        </object>
+        <object type="umlSubStateItem">
+          <property name="id" type="long">5</property>
+          <property name="relative_position" type="realpoint">235.000000,120.000000</property>
+          <property name="user_data" type="serializabledynamic">
+            <object type="udSCHSubDiagramElementItem">
+              <property name="id" type="long">0</property>
+              <property name="name" type="string">WhiteCycle</property>
+              <property name="description" type="string">Diagram element's description...</property>
+              <property name="subdiagram" type="serializabledynamicnocreate">
+                <object type="udSStateChartDiagramItem">
+                  <property name="id" type="long">-1</property>
+                  <property name="name" type="string">WhiteCycle</property>
+                  <property name="description" type="string">Increasing light cycle</property>
+                  <property name="diagram_type" type="string">State Chart</property>
+                  <property name="generate_code" type="bool">1</property>
+                  <property name="output_file" type="string">&lt;default&gt;</property>
+                  <property name="active_generator" type="string">udSStateChartGenerator</property>
+                  <property name="active_algorithm" type="string">udLoopCaseAlgorithm</property>
+                  <property name="input_action" type="string">&lt;none&gt;</property>
+                  <property name="non_blocking" type="bool">1</property>
+                  <property name="inline" type="bool">0</property>
+                  <diagram>
+                    <object type="umlInitialItem">
+                      <property name="id" type="long">1</property>
+                      <property name="relative_position" type="realpoint">190.000000,60.000000</property>
+                      <property name="user_data" type="serializabledynamic">
+                        <object type="udInitialElementItem">
+                          <property name="id" type="long">0</property>
+                          <property name="name" type="string">Initial</property>
+                          <property name="description" type="string">Diagram element's description...</property>
+                        </object>
+                      </property>
+                      <property name="size" type="realpoint">20.000000,20.000000</property>
+                      <property name="fill" type="brush">0,0,0,255 100</property>
+                      <property name="title" type="serializabledynamicnocreate">
+                        <object type="uddLabelElement">
+                          <property name="id" type="long">2</property>
+                          <property name="relative_position" type="realpoint">0.000000,25.000000</property>
+                          <property name="size" type="realpoint">39.000000,19.000000</property>
+                          <property name="text" type="string">Initial</property>
+                          <property name="label_type" type="int">1</property>
+                        </object>
+                      </property>
+                    </object>
+                    <object type="umlTransitionItem">
+                      <property name="id" type="long">3</property>
+                      <property name="relative_position" type="realpoint">510.000000,270.000000</property>
+                      <property name="user_data" type="serializabledynamic">
+                        <object type="udTransElementItem">
+                          <property name="id" type="long">0</property>
+                          <property name="name" type="string">Init</property>
+                          <property name="description" type="string">Shutdown light at beginning</property>
+                          <object type="udConditionLinkItem">
+                            <property name="id" type="long">-1</property>
+                            <property name="name" type="string">Always</property>
+                            <property name="description" type="string">Link description...</property>
+                            <property name="original_code" type="string">&lt;global&gt;::Always#6</property>
+                            <property name="scope" type="string">&lt;global&gt;</property>
+                          </object>
+                          <object type="udActionLinkItem">
+                            <property name="id" type="long">-1</property>
+                            <property name="name" type="string">shutDownLights</property>
+                            <property name="description" type="string">Link description...</property>
+                            <property name="original_code" type="string">&lt;global&gt;::shutDownLights#8</property>
+                            <property name="scope" type="string">&lt;global&gt;</property>
+                          </object>
+                        </object>
+                      </property>
+                      <property name="source" type="long">1</property>
+                      <property name="target" type="long">5</property>
+                      <property name="control_points" type="listrealpoint">
+                        <item>412.000000,93.000000</item>
+                      </property>
+                      <property name="label" type="serializabledynamicnocreate">
+                        <object type="uddLabelElement">
+                          <property name="id" type="long">4</property>
+                          <property name="relative_position" type="realpoint">-157.000000,-9.000000</property>
+                          <property name="size" type="realpoint">294.000000,19.000000</property>
+                          <property name="text" type="string">&lt;&lt; Always() / [shutDownLights()] &gt;&gt;</property>
+                          <property name="label_type" type="int">3</property>
+                        </object>
+                      </property>
+                    </object>
+                    <object type="umlSimpleStateItem">
+                      <property name="id" type="long">5</property>
+                      <property name="relative_position" type="realpoint">338.000000,170.000000</property>
+                      <property name="user_data" type="serializabledynamic">
+                        <object type="udSimpleStateElementItem">
+                          <property name="id" type="long">0</property>
+                          <property name="name" type="string">Increasing</property>
+                          <property name="description" type="string">Diagram element's description...</property>
+                        </object>
+                      </property>
+                      <property name="size" type="realpoint">104.000000,50.000000</property>
+                      <property name="fill" type="brush">254,253,211,255 100</property>
+                      <property name="title" type="serializabledynamicnocreate">
+                        <object type="uddLabelElement">
+                          <property name="id" type="long">6</property>
+                          <property name="relative_position" type="realpoint">12.000000,5.000000</property>
+                          <property name="size" type="realpoint">81.000000,19.000000</property>
+                          <property name="text" type="string">Increasing</property>
+                          <property name="label_type" type="int">1</property>
+                        </object>
+                      </property>
+                    </object>
+                    <object type="umlTransitionItem">
+                      <property name="id" type="long">7</property>
+                      <property name="relative_position" type="realpoint">510.000000,270.000000</property>
+                      <property name="user_data" type="serializabledynamic">
+                        <object type="udTransElementItem">
+                          <property name="id" type="long">0</property>
+                          <property name="name" type="string">Step</property>
+                          <property name="description" type="string">Increases light</property>
+                          <object type="udActionLinkItem">
+                            <property name="id" type="long">-1</property>
+                            <property name="name" type="string">incrRed</property>
+                            <property name="description" type="string">Link description...</property>
+                            <property name="original_code" type="string">&lt;global&gt;::incrRed#11</property>
+                            <property name="scope" type="string">&lt;global&gt;</property>
+                          </object>
+                          <object type="udActionLinkItem">
+                            <property name="id" type="long">-1</property>
+                            <property name="name" type="string">incrGreen</property>
+                            <property name="description" type="string">Link description...</property>
+                            <property name="original_code" type="string">&lt;global&gt;::incrGreen#12</property>
+                            <property name="scope" type="string">&lt;global&gt;</property>
+                          </object>
+                          <object type="udActionLinkItem">
+                            <property name="id" type="long">-1</property>
+                            <property name="name" type="string">incrBlue</property>
+                            <property name="description" type="string">Link description...</property>
+                            <property name="original_code" type="string">&lt;global&gt;::incrBlue#13</property>
+                            <property name="scope" type="string">&lt;global&gt;</property>
+                          </object>
+                          <object type="udConditionLinkItem">
+                            <property name="id" type="long">-1</property>
+                            <property name="name" type="string">NoEndRed</property>
+                            <property name="description" type="string">Link description...</property>
+                            <property name="original_code" type="string">&lt;global&gt;::NoEndRed#17</property>
+                            <property name="scope" type="string">&lt;global&gt;</property>
+                          </object>
+                        </object>
+                      </property>
+                      <property name="source" type="long">5</property>
+                      <property name="target" type="long">5</property>
+                      <property name="control_points" type="listrealpoint">
+                        <item>290.000000,150.000000</item>
+                        <item>270.000000,240.000000</item>
+                      </property>
+                      <property name="label" type="serializabledynamicnocreate">
+                        <object type="uddLabelElement">
+                          <property name="id" type="long">8</property>
+                          <property name="relative_position" type="realpoint">-253.000000,81.000000</property>
+                          <property name="size" type="realpoint">435.000000,19.000000</property>
+                          <property name="text" type="string">&lt;&lt; NoEndRed() / [incrRed(), incrGreen(), incrBlue()] &gt;&gt;</property>
+                          <property name="label_type" type="int">3</property>
+                        </object>
+                      </property>
+                    </object>
+                    <object type="umlFinalItem">
+                      <property name="id" type="long">9</property>
+                      <property name="relative_position" type="realpoint">710.000000,200.000000</property>
+                      <property name="user_data" type="serializabledynamic">
+                        <object type="udFinalElementItem">
+                          <property name="id" type="long">0</property>
+                          <property name="name" type="string">Final</property>
+                          <property name="description" type="string">Diagram element's description...</property>
+                        </object>
+                      </property>
+                      <property name="size" type="realpoint">20.000000,20.000000</property>
+                      <property name="title" type="serializabledynamicnocreate">
+                        <object type="uddLabelElement">
+                          <property name="id" type="long">10</property>
+                          <property name="relative_position" type="realpoint">0.000000,25.000000</property>
+                          <property name="size" type="realpoint">33.000000,19.000000</property>
+                          <property name="text" type="string">Final</property>
+                          <property name="label_type" type="int">1</property>
+                        </object>
+                      </property>
+                    </object>
+                    <object type="umlTransitionItem">
+                      <property name="id" type="long">11</property>
+                      <property name="relative_position" type="realpoint">510.000000,270.000000</property>
+                      <property name="user_data" type="serializabledynamic">
+                        <object type="udTransElementItem">
+                          <property name="id" type="long">0</property>
+                          <property name="name" type="string">End</property>
+                          <property name="description" type="string">Red light finished increasing</property>
+                          <object type="udConditionLinkItem">
+                            <property name="id" type="long">-1</property>
+                            <property name="name" type="string">EndRed</property>
+                            <property name="description" type="string">Link description...</property>
+                            <property name="original_code" type="string">&lt;global&gt;::EndRed#10</property>
+                            <property name="scope" type="string">&lt;global&gt;</property>
+                          </object>
+                        </object>
+                      </property>
+                      <property name="source" type="long">5</property>
+                      <property name="target" type="long">9</property>
+                      <property name="label" type="serializabledynamicnocreate">
+                        <object type="uddLabelElement">
+                          <property name="id" type="long">12</property>
+                          <property name="relative_position" type="realpoint">-50.000000,-29.000000</property>
+                          <property name="size" type="realpoint">161.000000,19.000000</property>
+                          <property name="text" type="string">&lt;&lt; EndRed() / [] &gt;&gt;</property>
+                          <property name="label_type" type="int">3</property>
+                        </object>
+                      </property>
+                    </object>
+                  </diagram>
+                </object>
+              </property>
+            </object>
+          </property>
+          <property name="size" type="realpoint">110.000000,50.000000</property>
+          <property name="fill" type="brush">254,253,211,255 100</property>
+          <property name="title" type="serializabledynamicnocreate">
+            <object type="uddLabelElement">
+              <property name="id" type="long">6</property>
+              <property name="relative_position" type="realpoint">12.000000,5.000000</property>
+              <property name="size" type="realpoint">86.000000,19.000000</property>
+              <property name="text" type="string">WhiteCycle</property>
+              <property name="label_type" type="int">1</property>
+            </object>
+          </property>
+          <property name="sign" type="serializabledynamicnocreate">
+            <object type="wxSFBitmapShape">
+              <property name="id" type="long">7</property>
+              <property name="active" type="bool">0</property>
+              <property name="hover_color" type="colour">128,128,255,255</property>
+              <property name="relative_position" type="realpoint">80.000000,30.000000</property>
+              <property name="size" type="realpoint">15.000000,5.000000</property>
+            </object>
+          </property>
+        </object>
+        <object type="umlSubStateItem">
+          <property name="id" type="long">10</property>
+          <property name="relative_position" type="realpoint">485.000000,120.000000</property>
+          <property name="user_data" type="serializabledynamic">
+            <object type="udSCHSubDiagramElementItem">
+              <property name="id" type="long">0</property>
+              <property name="name" type="string">RedCycle</property>
+              <property name="description" type="string">Diagram element's description...</property>
+              <property name="subdiagram" type="serializabledynamicnocreate">
+                <object type="udSStateChartDiagramItem">
+                  <property name="id" type="long">-1</property>
+                  <property name="name" type="string">RedCycle</property>
+                  <property name="description" type="string">Increasing light cycle</property>
+                  <property name="diagram_type" type="string">State Chart</property>
+                  <property name="generate_code" type="bool">1</property>
+                  <property name="output_file" type="string">&lt;default&gt;</property>
+                  <property name="active_generator" type="string">udSStateChartGenerator</property>
+                  <property name="active_algorithm" type="string">udLoopCaseAlgorithm</property>
+                  <property name="input_action" type="string">&lt;none&gt;</property>
+                  <property name="non_blocking" type="bool">1</property>
+                  <property name="inline" type="bool">0</property>
+                  <diagram>
+                    <object type="umlInitialItem">
+                      <property name="id" type="long">1</property>
+                      <property name="relative_position" type="realpoint">190.000000,60.000000</property>
+                      <property name="user_data" type="serializabledynamic">
+                        <object type="udInitialElementItem">
+                          <property name="id" type="long">0</property>
+                          <property name="name" type="string">Initial</property>
+                          <property name="description" type="string">Diagram element's description...</property>
+                        </object>
+                      </property>
+                      <property name="size" type="realpoint">20.000000,20.000000</property>
+                      <property name="fill" type="brush">0,0,0,255 100</property>
+                      <property name="title" type="serializabledynamicnocreate">
+                        <object type="uddLabelElement">
+                          <property name="id" type="long">2</property>
+                          <property name="relative_position" type="realpoint">0.000000,25.000000</property>
+                          <property name="size" type="realpoint">39.000000,19.000000</property>
+                          <property name="text" type="string">Initial</property>
+                          <property name="label_type" type="int">1</property>
+                        </object>
+                      </property>
+                    </object>
+                    <object type="umlTransitionItem">
+                      <property name="id" type="long">3</property>
+                      <property name="relative_position" type="realpoint">510.000000,270.000000</property>
+                      <property name="user_data" type="serializabledynamic">
+                        <object type="udTransElementItem">
+                          <property name="id" type="long">0</property>
+                          <property name="name" type="string">Init</property>
+                          <property name="description" type="string">Shutdown light at beginning</property>
+                          <object type="udConditionLinkItem">
+                            <property name="id" type="long">-1</property>
+                            <property name="name" type="string">Always</property>
+                            <property name="description" type="string">Link description...</property>
+                            <property name="original_code" type="string">&lt;global&gt;::Always#6</property>
+                            <property name="scope" type="string">&lt;global&gt;</property>
+                          </object>
+                          <object type="udActionLinkItem">
+                            <property name="id" type="long">-1</property>
+                            <property name="name" type="string">shutDownLights</property>
+                            <property name="description" type="string">Link description...</property>
+                            <property name="original_code" type="string">&lt;global&gt;::shutDownLights#8</property>
+                            <property name="scope" type="string">&lt;global&gt;</property>
+                          </object>
+                        </object>
+                      </property>
+                      <property name="source" type="long">1</property>
+                      <property name="target" type="long">11</property>
+                      <property name="control_points" type="listrealpoint">
+                        <item>412.000000,93.000000</item>
+                      </property>
+                      <property name="label" type="serializabledynamicnocreate">
+                        <object type="uddLabelElement">
+                          <property name="id" type="long">4</property>
+                          <property name="relative_position" type="realpoint">-157.000000,-9.000000</property>
+                          <property name="size" type="realpoint">294.000000,19.000000</property>
+                          <property name="text" type="string">&lt;&lt; Always() / [shutDownLights()] &gt;&gt;</property>
+                          <property name="label_type" type="int">3</property>
+                        </object>
+                      </property>
+                    </object>
+                    <object type="umlFinalItem">
+                      <property name="id" type="long">5</property>
+                      <property name="relative_position" type="realpoint">710.000000,200.000000</property>
+                      <property name="user_data" type="serializabledynamic">
+                        <object type="udFinalElementItem">
+                          <property name="id" type="long">0</property>
+                          <property name="name" type="string">Final</property>
+                          <property name="description" type="string">Diagram element's description...</property>
+                        </object>
+                      </property>
+                      <property name="size" type="realpoint">20.000000,20.000000</property>
+                      <property name="title" type="serializabledynamicnocreate">
+                        <object type="uddLabelElement">
+                          <property name="id" type="long">6</property>
+                          <property name="relative_position" type="realpoint">0.000000,25.000000</property>
+                          <property name="size" type="realpoint">33.000000,19.000000</property>
+                          <property name="text" type="string">Final</property>
+                          <property name="label_type" type="int">1</property>
+                        </object>
+                      </property>
+                    </object>
+                    <object type="umlTransitionItem">
+                      <property name="id" type="long">7</property>
+                      <property name="relative_position" type="realpoint">510.000000,270.000000</property>
+                      <property name="user_data" type="serializabledynamic">
+                        <object type="udTransElementItem">
+                          <property name="id" type="long">0</property>
+                          <property name="name" type="string">End</property>
+                          <property name="description" type="string">Red light finished increasing</property>
+                          <object type="udConditionLinkItem">
+                            <property name="id" type="long">-1</property>
+                            <property name="name" type="string">EndRed</property>
+                            <property name="description" type="string">Link description...</property>
+                            <property name="original_code" type="string">&lt;global&gt;::EndRed#10</property>
+                            <property name="scope" type="string">&lt;global&gt;</property>
+                          </object>
+                        </object>
+                      </property>
+                      <property name="source" type="long">11</property>
+                      <property name="target" type="long">5</property>
+                      <property name="label" type="serializabledynamicnocreate">
+                        <object type="uddLabelElement">
+                          <property name="id" type="long">8</property>
+                          <property name="relative_position" type="realpoint">-80.000000,-29.000000</property>
+                          <property name="size" type="realpoint">161.000000,19.000000</property>
+                          <property name="text" type="string">&lt;&lt; EndRed() / [] &gt;&gt;</property>
+                          <property name="label_type" type="int">3</property>
+                        </object>
+                      </property>
+                    </object>
+                    <object type="umlTransitionItem">
+                      <property name="id" type="long">9</property>
+                      <property name="relative_position" type="realpoint">510.000000,270.000000</property>
+                      <property name="user_data" type="serializabledynamic">
+                        <object type="udTransElementItem">
+                          <property name="id" type="long">0</property>
+                          <property name="name" type="string">Step</property>
+                          <property name="description" type="string">Increases light</property>
+                          <object type="udActionLinkItem">
+                            <property name="id" type="long">-1</property>
+                            <property name="name" type="string">incrRed</property>
+                            <property name="description" type="string">Link description...</property>
+                            <property name="original_code" type="string">&lt;global&gt;::incrRed#11</property>
+                            <property name="scope" type="string">&lt;global&gt;</property>
+                          </object>
+                          <object type="udConditionLinkItem">
+                            <property name="id" type="long">-1</property>
+                            <property name="name" type="string">NoEndRed</property>
+                            <property name="description" type="string">Link description...</property>
+                            <property name="original_code" type="string">&lt;global&gt;::NoEndRed#17</property>
+                            <property name="scope" type="string">&lt;global&gt;</property>
+                          </object>
+                        </object>
+                      </property>
+                      <property name="source" type="long">11</property>
+                      <property name="target" type="long">11</property>
+                      <property name="control_points" type="listrealpoint">
+                        <item>290.000000,150.000000</item>
+                        <item>270.000000,240.000000</item>
+                      </property>
+                      <property name="label" type="serializabledynamicnocreate">
+                        <object type="uddLabelElement">
+                          <property name="id" type="long">10</property>
+                          <property name="relative_position" type="realpoint">-253.000000,81.000000</property>
+                          <property name="size" type="realpoint">253.000000,19.000000</property>
+                          <property name="text" type="string">&lt;&lt; NoEndRed() / [incrRed()] &gt;&gt;</property>
+                          <property name="label_type" type="int">3</property>
+                        </object>
+                      </property>
+                    </object>
+                    <object type="umlSimpleStateItem">
+                      <property name="id" type="long">11</property>
+                      <property name="relative_position" type="realpoint">338.000000,170.000000</property>
+                      <property name="user_data" type="serializabledynamic">
+                        <object type="udSimpleStateElementItem">
+                          <property name="id" type="long">0</property>
+                          <property name="name" type="string">Increasing</property>
+                          <property name="description" type="string">Diagram element's description...</property>
+                        </object>
+                      </property>
+                      <property name="size" type="realpoint">104.000000,50.000000</property>
+                      <property name="fill" type="brush">254,253,211,255 100</property>
+                      <property name="title" type="serializabledynamicnocreate">
+                        <object type="uddLabelElement">
+                          <property name="id" type="long">12</property>
+                          <property name="relative_position" type="realpoint">12.000000,5.000000</property>
+                          <property name="size" type="realpoint">81.000000,19.000000</property>
+                          <property name="text" type="string">Increasing</property>
+                          <property name="label_type" type="int">1</property>
+                        </object>
+                      </property>
+                    </object>
+                  </diagram>
+                </object>
+              </property>
+            </object>
+          </property>
+          <property name="size" type="realpoint">111.000000,50.000000</property>
+          <property name="fill" type="brush">254,253,211,255 100</property>
+          <property name="title" type="serializabledynamicnocreate">
+            <object type="uddLabelElement">
+              <property name="id" type="long">11</property>
+              <property name="relative_position" type="realpoint">20.000000,5.000000</property>
+              <property name="size" type="realpoint">71.000000,19.000000</property>
+              <property name="text" type="string">RedCycle</property>
+              <property name="label_type" type="int">1</property>
+            </object>
+          </property>
+          <property name="sign" type="serializabledynamicnocreate">
+            <object type="wxSFBitmapShape">
+              <property name="id" type="long">12</property>
+              <property name="active" type="bool">0</property>
+              <property name="hover_color" type="colour">128,128,255,255</property>
+              <property name="relative_position" type="realpoint">81.000000,30.000000</property>
+              <property name="size" type="realpoint">15.000000,5.000000</property>
+            </object>
+          </property>
+        </object>
+      </diagram>
+    </object>
+  </object>
+  <object type="udCodePackageItem">
+    <property name="id" type="long">5</property>
+    <property name="name" type="string">Generic variables</property>
+    <object type="udGenericVariableItem">
+      <property name="id" type="long">4</property>
+      <property name="name" type="string">dre</property>
+      <property name="description" type="string">Data Runtime Environment	</property>
+      <property name="scope" type="string">&lt;global&gt;</property>
+      <property name="signature" type="string">&lt;global&gt;::dre#4</property>
+      <property name="value_type" type="int">0</property>
+      <property name="data_type" type="int">0</property>
+      <property name="data_modifier" type="int">7</property>
+      <property name="user_decl_place" type="int">2</property>
+      <property name="user_data_type" type="string">t_dre</property>
+      <property name="user_decl_file" type="string">/home/pi/sketchbook/gatArduinOSEKsample/prj_dre.h</property>
+    </object>
+  </object>
+  <object type="udCodePackageItem">
+    <property name="id" type="long">7</property>
+    <property name="name" type="string">Condition functions</property>
+    <object type="udConditionItem">
+      <property name="id" type="long">6</property>
+      <property name="name" type="string">Always</property>
+      <property name="description" type="string">Always True</property>
+      <property name="code" type="string">true</property>
+      <property name="scope" type="string">&lt;global&gt;</property>
+      <property name="signature" type="string">&lt;global&gt;::Always#6</property>
+      <property name="inline" type="bool">1</property>
+      <property name="retval_data_type" type="int">0</property>
+      <property name="retval_value_type" type="int">0</property>
+      <property name="retval_data_modifier" type="int">0</property>
+      <property name="user_retval_decl_place" type="int">2</property>
+      <property name="user_retval_data_type" type="string">bool</property>
+      <property name="user_retval_decl_file" type="string">/home/pi/sketchbook/libraries/gatArduinOSEK/gttc_types.h</property>
+      <property name="function_modifier" type="int">0</property>
+    </object>
+    <object type="udConditionItem">
+      <property name="id" type="long">10</property>
+      <property name="name" type="string">EndRed</property>
+      <property name="description" type="string">Red light has arrived to its maximum value.</property>
+      <property name="code" type="string">dre.redLight&gt;=255</property>
+      <property name="scope" type="string">&lt;global&gt;</property>
+      <property name="signature" type="string">&lt;global&gt;::EndRed#10</property>
+      <property name="inline" type="bool">1</property>
+      <property name="retval_data_type" type="int">0</property>
+      <property name="retval_value_type" type="int">0</property>
+      <property name="retval_data_modifier" type="int">0</property>
+      <property name="user_retval_decl_place" type="int">2</property>
+      <property name="user_retval_data_type" type="string">bool</property>
+      <property name="user_retval_decl_file" type="string">/home/pi/sketchbook/libraries/gatArduinOSEK/gttc_types.h</property>
+      <property name="function_modifier" type="int">0</property>
+    </object>
+    <object type="udConditionItem">
+      <property name="id" type="long">18</property>
+      <property name="name" type="string">EndGreen</property>
+      <property name="description" type="string">Green light has arrived to its maximum level.</property>
+      <property name="code" type="string">dre.greenLight&gt;=255</property>
+      <property name="scope" type="string">&lt;global&gt;</property>
+      <property name="signature" type="string">&lt;global&gt;::EndGreen#18</property>
+      <property name="inline" type="bool">1</property>
+      <property name="retval_data_type" type="int">0</property>
+      <property name="retval_value_type" type="int">0</property>
+      <property name="retval_data_modifier" type="int">0</property>
+      <property name="user_retval_decl_place" type="int">2</property>
+      <property name="user_retval_data_type" type="string">bool</property>
+      <property name="user_retval_decl_file" type="string">/home/pi/sketchbook/libraries/gatArduinOSEK/gttc_types.h</property>
+      <property name="function_modifier" type="int">0</property>
+    </object>
+    <object type="udConditionItem">
+      <property name="id" type="long">22</property>
+      <property name="name" type="string">EndBlue</property>
+      <property name="description" type="string">Blue light has arrived to its maximum level.</property>
+      <property name="code" type="string">dre.blueLight&gt;=255</property>
+      <property name="scope" type="string">&lt;global&gt;</property>
+      <property name="signature" type="string">&lt;global&gt;::EndBlue#22</property>
+      <property name="inline" type="bool">1</property>
+      <property name="retval_data_type" type="int">0</property>
+      <property name="retval_value_type" type="int">0</property>
+      <property name="retval_data_modifier" type="int">0</property>
+      <property name="user_retval_decl_place" type="int">2</property>
+      <property name="user_retval_data_type" type="string">bool</property>
+      <property name="user_retval_decl_file" type="string">/home/pi/sketchbook/libraries/gatArduinOSEK/gttc_types.h</property>
+      <property name="function_modifier" type="int">0</property>
+    </object>
+    <object type="udConditionItem">
+      <property name="id" type="long">17</property>
+      <property name="name" type="string">NoEndRed</property>
+      <property name="description" type="string">No EndRed condition</property>
+      <property name="code" type="string">dre.redLight&lt;255</property>
+      <property name="scope" type="string">&lt;global&gt;</property>
+      <property name="signature" type="string">&lt;global&gt;::NoEndRed#17</property>
+      <property name="inline" type="bool">1</property>
+      <property name="retval_data_type" type="int">1</property>
+      <property name="retval_value_type" type="int">0</property>
+      <property name="retval_data_modifier" type="int">0</property>
+      <property name="user_retval_decl_place" type="int">0</property>
+      <property name="function_modifier" type="int">0</property>
+    </object>
+    <object type="udConditionItem">
+      <property name="id" type="long">23</property>
+      <property name="name" type="string">NoEndBlue</property>
+      <property name="description" type="string">No EndBlue condition</property>
+      <property name="code" type="string">dre.blueLight&lt;255</property>
+      <property name="scope" type="string">&lt;global&gt;</property>
+      <property name="signature" type="string">&lt;global&gt;::NoEndBlue#23</property>
+      <property name="inline" type="bool">1</property>
+      <property name="retval_data_type" type="int">1</property>
+      <property name="retval_value_type" type="int">0</property>
+      <property name="retval_data_modifier" type="int">0</property>
+      <property name="user_retval_decl_place" type="int">0</property>
+      <property name="function_modifier" type="int">0</property>
+    </object>
+    <object type="udConditionItem">
+      <property name="id" type="long">24</property>
+      <property name="name" type="string">NoEndGreen</property>
+      <property name="description" type="string">No EndGreen condition</property>
+      <property name="code" type="string">dre.greenLight&lt;255</property>
+      <property name="scope" type="string">&lt;global&gt;</property>
+      <property name="signature" type="string">&lt;global&gt;::NoEndGreen#24</property>
+      <property name="inline" type="bool">1</property>
+      <property name="retval_data_type" type="int">1</property>
+      <property name="retval_value_type" type="int">0</property>
+      <property name="retval_data_modifier" type="int">0</property>
+      <property name="user_retval_decl_place" type="int">0</property>
+      <property name="function_modifier" type="int">0</property>
+    </object>
+  </object>
+  <object type="udCodePackageItem">
+    <property name="id" type="long">9</property>
+    <property name="name" type="string">Action functions</property>
+    <object type="udActionItem">
+      <property name="id" type="long">8</property>
+      <property name="name" type="string">shutDownLights</property>
+      <property name="description" type="string">Shut down lights.</property>
+      <property name="code" type="string">dre.redLight=0;
+dre.greenLight=0;
+dre.blueLight=0;</property>
+      <property name="scope" type="string">&lt;global&gt;</property>
+      <property name="signature" type="string">&lt;global&gt;::shutDownLights#8</property>
+      <property name="inline" type="bool">1</property>
+      <property name="retval_data_type" type="int">10</property>
+      <property name="retval_value_type" type="int">0</property>
+      <property name="retval_data_modifier" type="int">0</property>
+      <property name="user_retval_decl_place" type="int">0</property>
+      <property name="function_modifier" type="int">0</property>
+    </object>
+    <object type="udActionItem">
+      <property name="id" type="long">11</property>
+      <property name="name" type="string">incrRed</property>
+      <property name="description" type="string">Increases red light</property>
+      <property name="code" type="string">incrColor(&amp;(dre.redLight));</property>
+      <property name="scope" type="string">&lt;global&gt;</property>
+      <property name="signature" type="string">&lt;global&gt;::incrRed#11</property>
+      <property name="inline" type="bool">1</property>
+      <property name="retval_data_type" type="int">10</property>
+      <property name="retval_value_type" type="int">0</property>
+      <property name="retval_data_modifier" type="int">0</property>
+      <property name="user_retval_decl_place" type="int">0</property>
+      <property name="function_modifier" type="int">0</property>
+    </object>
+    <object type="udActionItem">
+      <property name="id" type="long">12</property>
+      <property name="name" type="string">incrGreen</property>
+      <property name="description" type="string">Increases the green light</property>
+      <property name="code" type="string">incrColor(&amp;(dre.greenLight));</property>
+      <property name="scope" type="string">&lt;global&gt;</property>
+      <property name="signature" type="string">&lt;global&gt;::incrGreen#12</property>
+      <property name="inline" type="bool">1</property>
+      <property name="retval_data_type" type="int">10</property>
+      <property name="retval_value_type" type="int">0</property>
+      <property name="retval_data_modifier" type="int">0</property>
+      <property name="user_retval_decl_place" type="int">0</property>
+      <property name="function_modifier" type="int">0</property>
+    </object>
+    <object type="udActionItem">
+      <property name="id" type="long">13</property>
+      <property name="name" type="string">incrBlue</property>
+      <property name="description" type="string">Increases the blue light</property>
+      <property name="code" type="string">incrColor(&amp;(dre.blueLight));</property>
+      <property name="scope" type="string">&lt;global&gt;</property>
+      <property name="signature" type="string">&lt;global&gt;::incrBlue#13</property>
+      <property name="inline" type="bool">1</property>
+      <property name="retval_data_type" type="int">10</property>
+      <property name="retval_value_type" type="int">0</property>
+      <property name="retval_data_modifier" type="int">0</property>
+      <property name="user_retval_decl_place" type="int">0</property>
+      <property name="function_modifier" type="int">0</property>
+    </object>
+  </object>
+  <object type="udCodePackageItem">
+    <property name="id" type="long">15</property>
+    <property name="name" type="string">Generic functions</property>
+    <object type="udGenericFunctionItem">
+      <property name="id" type="long">14</property>
+      <property name="name" type="string">incrColor</property>
+      <property name="description" type="string">Increases a color</property>
+      <property name="code" type="string">if (color&gt;=255){
+    color=0;
+} else {
+    color=color+1;
+}</property>
+      <property name="scope" type="string">&lt;global&gt;</property>
+      <property name="signature" type="string">&lt;global&gt;::incrColor#14&lt;color:uint8_t&gt;</property>
+      <property name="inline" type="bool">0</property>
+      <property name="retval_data_type" type="int">10</property>
+      <property name="retval_value_type" type="int">0</property>
+      <property name="retval_data_modifier" type="int">0</property>
+      <property name="user_retval_decl_place" type="int">0</property>
+      <property name="function_modifier" type="int">0</property>
+      <object type="udParamItem">
+        <property name="id" type="long">16</property>
+        <property name="name" type="string">color</property>
+        <property name="description" type="string">color to be increased using this formula:
+newcolor=((color++) % 255).</property>
+        <property name="scope" type="string">&lt;global&gt;::incrColor</property>
+        <property name="signature" type="string">&lt;global&gt;::incrColor::color#16</property>
+        <property name="value_type" type="int">2</property>
+        <property name="data_type" type="int">0</property>
+        <property name="data_modifier" type="int">0</property>
+        <property name="user_decl_place" type="int">2</property>
+        <property name="user_data_type" type="string">uint8_t</property>
+        <property name="user_decl_file" type="string">/home/pi/sketchbook/libraries/gatArduinOSEK/gttc_types.h</property>
+      </object>
+    </object>
+  </object>
+</project>
