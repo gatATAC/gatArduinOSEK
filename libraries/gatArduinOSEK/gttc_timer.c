@@ -27,11 +27,25 @@ uint32_t busyMicros = 0L;       // Stores the ellapsed time at the end of the fu
 uint32_t syncInvocations=55L;    // This variable stores the number of timerSync() function invocations during the current main loop cycle.  It is a measure of the remaining free cycle time that is wasted in the timerSync loop at the end of the main loop.
 boolean busyTimeStoreFlag=true;
 
-uint32_t cycle_time_micros=CYCLE_TIME_MICROS;
+uint32_t cycle_time_micros=CYCLE_TIME_MICROS_DEFAULT;
+
+#ifdef GTTC_TIMER_USE_METRO
+#include <Metro.h>
+
+Metro sysTimer;
+#endif
 
 /* ----------- Timer Init functions -----------*/
 void timerSetCycleTime(uint32_t cycle_time){
 	cycle_time_micros=cycle_time;
+#ifdef GTTC_TIMER_USE_METRO
+sysTimer = Metro(cycle_time/1000);// milliseconds
+sysTimer.reset();
+#endif
+}
+
+uint32_t timerGetCycleTime(void){
+	return cycle_time_micros;
 }
 
 /* ----------- Timer Synchronization function ------------------ */
@@ -50,10 +64,9 @@ boolean timerSync(void){
     // As the busy measurement variables have been stored, we will not do it again until next main loop cycle is begun.
     busyTimeStoreFlag=false;
   } else {
-
   	syncInvocations++;          // Measurement variable increment
   }
-
+#ifndef GTTC_TIMER_USE_METRO
   currentMicros = micros();   // Acquisition of the current microseconds time stamp of the system 
 #ifdef TIMEBASE_USE_MS
   currentMillis = millis();
@@ -78,16 +91,20 @@ if (currentMillis<previousMillis){
   else {
     elapsedMicros=currentMicros-previousMicros;
   }
-  
+#endif  
   // Time sync expiration time check
+#ifdef GTTC_TIMER_USE_METRO
+  if(sysTimer.check()){
+#else
   if (elapsedMicros>=cycle_time_micros){
+#endif
     result=true;  // Cycle time expired, result will be true
 
     // Store the current timestamps for calculating the next cycle time
 #ifdef TIMEBASE_USE_MS
-    previousMillis=currentMillis;
+    previousMillis=millis();
 #endif
-    previousMicros=currentMicros;
+    previousMicros=micros();
     
     // As a new cycle will be begin, force next invocation to store the measurement busy variables
     busyTimeStoreFlag=true;

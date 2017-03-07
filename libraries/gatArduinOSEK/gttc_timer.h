@@ -6,10 +6,12 @@
 #include "gttc_types.h"
 
 /* Cycle time if no timerSetCycleTime() used */
-#define CYCLE_TIME_MICROS 40000L
+#define CYCLE_TIME_MICROS_DEFAULT 40000L
 
 #define TIME_MICROS_MAX 4294967295L
 #define TIME_MS_MAX 4294967295L
+
+#define CALC_CYCLE_COUNT_FOR_TIME(x) ((x)/timerGetCycleTime())
 
 /* ------------------------ Timer synchronization variables -------------------- */
 #ifdef TIMEBASE_USE_MS
@@ -35,10 +37,16 @@ extern uint32_t syncInvocations;    // This variable stores the number of timerS
 extern "C" 
 #endif
 boolean timerSync(void);
+
 #ifdef __cplusplus
 extern "C" 
 #endif
 void timerSetCycleTime(uint32_t cycle_time);
+
+#ifdef __cplusplus
+extern "C" 
+#endif
+uint32_t timerGetCycleTime(void);
 
 #endif // _GTTC_TIMER_H
 
